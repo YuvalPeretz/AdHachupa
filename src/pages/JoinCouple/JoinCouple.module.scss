@@ -1,0 +1,112 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  direction: rtl;
+}
+
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 36px 28px;
+  box-shadow: 0 8px 40px rgba(45, 45, 45, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: right;
+
+  @include bp.desktop-up {
+    padding: 48px 40px;
+  }
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.logoImg {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  opacity: 0.85;
+}
+
+.title {
+  font-family: var(--app-font-heading);
+  font-size: 24px;
+  font-weight: 700;
+  color: #2D2D2D;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.subtitle {
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  color: rgba(45, 45, 45, 0.65);
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.coupleNames {
+  font-family: var(--app-font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #C9A97A;
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.joinBtn {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  font-family: var(--ant-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  background: #C9A97A;
+  border-color: #C9A97A;
+  color: #fff;
+
+  &:hover,
+  &:focus {
+    background: #b8936a !important;
+    border-color: #b8936a !important;
+  }
+}
+
+.errorText {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  color: #E07070;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.successText {
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  color: #A8C5A0;
+  text-align: center;
+  font-weight: 500;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(45, 45, 45, 0.08);
+  margin: 20px 0;
+}
+
+.signInNote {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: rgba(45, 45, 45, 0.5);
+  text-align: center;
+  margin-top: 16px;
+}

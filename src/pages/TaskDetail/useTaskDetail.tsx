@@ -7,7 +7,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import type { Task } from '../../types';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import { fetchTaskById, updateTask as updateTaskFs } from '../../lib/firestore/tasks';
 
 export interface UseTaskDetailResult {
@@ -19,7 +19,7 @@ export interface UseTaskDetailResult {
 
 export function useTaskDetail(taskId: string): UseTaskDetailResult {
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   const { data: task, isLoading } = useQuery<Task | null>({
     queryKey: ['task', taskId],

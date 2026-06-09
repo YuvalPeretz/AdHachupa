@@ -24,10 +24,19 @@ import type {
 } from '../../types';
 import type { Gender } from '../../store/onboardingSlice';
 
+// ─── User profile ─────────────────────────────────────────────────────────────
+// doc id == Firebase Auth uid — maps a user to their couple
+
+export interface UserProfileDoc {
+  coupleId: string;
+}
+
 // ─── Couple ───────────────────────────────────────────────────────────────────
+// doc id == auto-generated coupleId (NOT the uid)
 
 export interface CoupleDoc {
   coupleId: string;
+  memberUids: string[];  // [uid1] on create; [uid1, uid2] after partner joins
   name1: string;
   name2: string;
   gender1: Gender;
@@ -36,6 +45,18 @@ export interface CoupleDoc {
   isKosher: boolean;
   createdAt: Timestamp;
   updatedAt: Timestamp;
+}
+
+// ─── Couple invite ────────────────────────────────────────────────────────────
+// doc id == invite token (auto-generated, acts as a capability URL)
+
+export interface CoupleInviteDoc {
+  coupleId: string;
+  createdByUid: string;
+  coupleNames: string;
+  expiresAt: Timestamp;
+  usedByUid?: string;
+  createdAt: Timestamp;
 }
 
 // ─── Event ────────────────────────────────────────────────────────────────────

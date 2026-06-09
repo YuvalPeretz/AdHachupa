@@ -12,7 +12,7 @@ import type { TaskDoc, VendorDoc, BudgetDoc, EventDoc } from '../../lib/firestor
 import { docToTask, docToVendor, docToEvent, daysUntil, parseDisplayDate } from '../../lib/firestore/converters';
 import { db } from '../../lib/firebase';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 
 declare global {
   interface Window {
@@ -166,7 +166,7 @@ export interface UseDashboardResult {
 
 export function useDashboard(): UseDashboardResult {
   const staleTime = getStaleTime();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   const { data, isLoading, isFetching, dataUpdatedAt } = useQuery<DashboardPayload>({
     queryKey: ['dashboard', coupleId],

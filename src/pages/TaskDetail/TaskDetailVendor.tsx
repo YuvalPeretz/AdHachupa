@@ -11,7 +11,7 @@ import type { Task, TaskStatus, Vendor } from '../../types';
 import { fetchTaskById, updateTask } from '../../lib/firestore/tasks';
 import { fetchVendors, addVendor, selectVendor } from '../../lib/firestore/vendors';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import styles from './TaskDetail.module.scss';
 
 interface TaskDetailVendorProps {
@@ -24,7 +24,7 @@ export function TaskDetailVendor({ taskId }: TaskDetailVendorProps) {
   const { t } = useTranslation('tasks');
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
   const [showAddVendor, setShowAddVendor] = useState(false);
   const [vendorForm, setVendorForm] = useState({
     name: '',

@@ -9,10 +9,12 @@ export interface AuthUser {
   displayName: string | null;
   email: string | null;
   photoURL: string | null;
+  coupleId: string | null;
 }
 
 export interface AuthState {
   uid: string | null;
+  coupleId: string | null;
   displayName: string | null;
   email: string | null;
   photoURL: string | null;
@@ -21,6 +23,7 @@ export interface AuthState {
 
 const initialState: AuthState = {
   uid: null,
+  coupleId: null,
   displayName: null,
   email: null,
   photoURL: null,
@@ -36,16 +39,22 @@ const authSlice = createSlice({
     },
 
     setAuthUser(state, action: PayloadAction<AuthUser>) {
-      const { uid, displayName, email, photoURL } = action.payload;
+      const { uid, coupleId, displayName, email, photoURL } = action.payload;
       state.uid = uid;
+      state.coupleId = coupleId;
       state.displayName = displayName;
       state.email = email;
       state.photoURL = photoURL;
       state.status = 'authenticated';
     },
 
+    setCoupleId(state, action: PayloadAction<string>) {
+      state.coupleId = action.payload;
+    },
+
     clearAuthUser(state) {
       state.uid = null;
+      state.coupleId = null;
       state.displayName = null;
       state.email = null;
       state.photoURL = null;
@@ -54,13 +63,15 @@ const authSlice = createSlice({
   },
 });
 
-export const { setAuthLoading, setAuthUser, clearAuthUser } = authSlice.actions;
+export const { setAuthLoading, setAuthUser, setCoupleId, clearAuthUser } = authSlice.actions;
 
 // Selectors
 export const selectAuthStatus = (state: RootState) => state.auth.status;
 export const selectAuthUid = (state: RootState) => state.auth.uid;
+export const selectCoupleId = (state: RootState) => state.auth.coupleId;
 export const selectAuthUser = (state: RootState) => ({
   uid: state.auth.uid,
+  coupleId: state.auth.coupleId,
   displayName: state.auth.displayName,
   email: state.auth.email,
   photoURL: state.auth.photoURL,

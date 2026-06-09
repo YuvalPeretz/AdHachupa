@@ -1,11 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import { fetchBudget, addExpense, updateTotalBudget } from '../../lib/firestore/budget';
 import type { AddExpenseInput } from '../../lib/firestore/types';
 
 export function useBudget() {
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   return useQuery({
     queryKey: ['budget', coupleId],
@@ -17,7 +17,7 @@ export function useBudget() {
 
 export function useUpdateTotalBudget() {
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   return useMutation({
     mutationFn: (totalBudget: number) => updateTotalBudget(coupleId, totalBudget),
@@ -29,7 +29,7 @@ export function useUpdateTotalBudget() {
 
 export function useAddExpense() {
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   return useMutation({
     mutationFn: (data: AddExpenseInput) => addExpense(coupleId, data),

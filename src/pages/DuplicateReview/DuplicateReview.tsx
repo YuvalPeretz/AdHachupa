@@ -5,7 +5,7 @@ import { useQuery, useMutation } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import { fetchDuplicates, mergeGuests, dismissDuplicate } from '../../lib/firestore/guests';
 import type { DuplicatePair } from '../../lib/firestore/types';
 import styles from './DuplicateReview.module.scss';
@@ -13,7 +13,7 @@ import styles from './DuplicateReview.module.scss';
 export function DuplicateReview() {
   const navigate = useNavigate();
   const { t } = useTranslation('guests');
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
   const [messageApi, contextHolder] = message.useMessage();
   const [resolvedIds, setResolvedIds] = useState<Set<string>>(new Set());
 

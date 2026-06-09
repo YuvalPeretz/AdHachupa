@@ -8,191 +8,170 @@ service cloud.firestore {
       return request.auth != null;
     }
 
-    // True when the authenticated user owns the given coupleId value.
-    function isOwner(coupleId) {
-      return isAuthed() && request.auth.uid == coupleId;
+    // Reads users/{uid} to resolve the caller's coupleId.
+    // This single-document lookup replaces the old uid==coupleId assumption.
+    function callerCoupleId() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.coupleId;
     }
 
-    // For create operations: validates the new doc's coupleId matches the caller.
-    function creatingAsOwner() {
-      return isAuthed() && request.resource.data.coupleId == request.auth.uid;
+    // True when the caller belongs to the given couple.
+    function isMember(coupleId) {
+      return isAuthed() && callerCoupleId() == coupleId;
     }
 
-    // For update operations: prevents the caller from reassigning coupleId.
+    // For create: the new doc's coupleId must match the caller's couple.
+    function creatingAsMember() {
+      return isAuthed() && request.resource.data.coupleId == callerCoupleId();
+    }
+
+    // For update: prevents reassigning coupleId to a different couple.
     function keepsCoupleId() {
       return request.resource.data.coupleId == resource.data.coupleId;
     }
 
-    // ─── couples ──────────────────────────────────────────────────────────────
-    // Document ID == Firebase Auth uid.
-    // The `onboarding` Cloud Function creates this document atomically
-    // alongside events, budget, and the initial task list. The couple may
-    // read and update their own profile directly from the client.
-    match /couples/{uid} {
+    // ─── users ────────────────────────────────────────────────────────────────
+    // doc id == Firebase Auth uid. Maps a user to their couple.
+    // Created client-side during onboarding (partner 1) or by the
+    // acceptCoupleInvite Cloud Function (partner 2).
+    match /users/{uid} {
       allow read:   if isAuthed() && request.auth.uid == uid;
       allow create: if isAuthed() && request.auth.uid == uid;
-      allow update: if isAuthed() && request.auth.uid == uid;
+      allow update: if false; // CF only (acceptCoupleInvite Admin SDK)
+      allow delete: if false;
+    }
+
+    // ─── couples ──────────────────────────────────────────────────────────────
+    // doc id == auto-generated coupleId (NOT the uid).
+    // Created atomically by the `onboarding` Cloud Function.
+    match /couples/{coupleId} {
+      allow read:   if isMember(coupleId);
+      allow create: if false; // CF only
+      allow update: if isMember(coupleId);
+      allow delete: if false;
+    }
+
+    // ─── coupleInvites ────────────────────────────────────────────────────────
+    // doc id == invite token (UUID, acts as a capability URL).
+    // Any authenticated user can read (to validate before joining).
+    // Only a couple member can create an invite for their own couple.
+    // Accepting is done by the acceptCoupleInvite Cloud Function (Admin SDK).
+    match /coupleInvites/{token} {
+      allow read:   if isAuthed();
+      allow create: if isAuthed() && request.resource.data.coupleId == callerCoupleId()
+                       && request.resource.data.createdByUid == request.auth.uid;
+      allow update: if false; // CF only
       allow delete: if false;
     }
 
     // ─── events ───────────────────────────────────────────────────────────────
-    // Created atomically by the `onboarding` Cloud Function.
-    // The couple may update event details (venue, date) directly after onboarding.
     match /events/{eventId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
       allow delete: if false;
     }
 
     // ─── guests ───────────────────────────────────────────────────────────────
-    // Direct Firestore writes from the client (add / update / delete).
-    // Guests submitted via a parent-share link go through the `submitShareGuests`
-    // Cloud Function (Admin SDK) — those writes bypass these rules.
-    // Duplicate merges go through the `mergeGuests` Cloud Function.
     match /guests/{guestId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     // ─── dismissedDuplicates ─────────────────────────────────────────────────
-    // Created when the couple taps "שמור בנפרד" on a duplicate pair.
-    // Prevents the same pair from surfacing again in the Duplicate Review screen.
     match /dismissedDuplicates/{id} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow delete: if isMember(resource.data.coupleId);
       allow update: if false;
     }
 
     // ─── tasks ────────────────────────────────────────────────────────────────
-    // Bulk initial creation by the `onboarding` Cloud Function.
-    // Subsequent creates and updates are direct Firestore writes from the client.
-    // The `selectVendor` Cloud Function atomically updates vendor + task status.
     match /tasks/{taskId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     // ─── task sub-type detail documents ──────────────────────────────────────
-    // One document per task; document ID == taskId.
-    // coupleId is denormalized into each document to enable owner-scoped rules
-    // without a cross-document lookup.
-    //
-    // taskPayments    — payment-type tasks (estimatedCost, advancePaid, etc.)
-    // taskVendorConfigs — vendor-type tasks (vendorOptions[])
-    // taskDecisions   — decision-type tasks (options[], finalDecision)
-    // taskReminders   — reminder-type tasks (reminderDate, notifyEnabled)
-    //
-    // Note: `updatePayment` Cloud Function will eventually own payment writes
-    // to atomically sync budget and schedule/cancel reminders.
-
     match /taskPayments/{taskId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     match /taskVendorConfigs/{taskId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     match /taskDecisions/{taskId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     match /taskReminders/{taskId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     // ─── vendors ──────────────────────────────────────────────────────────────
-    // Direct add/update/delete from the client for individual vendor operations.
-    // The `selectVendor` Cloud Function handles atomic selection: sets one vendor
-    // to "selected", all others to "rejected", and updates the task status — all
-    // in a single batched write. Those CF writes bypass these rules via Admin SDK.
     match /vendors/{vendorId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     // ─── budget ───────────────────────────────────────────────────────────────
-    // Document ID == coupleId. Contains totalBudget, giftIncome, breakeven,
-    // rsvpBreakeven, and a categories[] array with per-category allocated/spent.
-    // Created atomically by the `onboarding` Cloud Function.
-    // The `recalculateBreakeven` Firestore-triggered Cloud Function updates
-    // breakeven and rsvpBreakeven after any expense, gift, or RSVP change.
     match /budget/{coupleId} {
-      allow read:   if isOwner(coupleId);
-      allow create: if isOwner(coupleId);
-      allow update: if isOwner(coupleId);
+      allow read:   if isMember(coupleId);
+      allow create: if false; // CF only
+      allow update: if isMember(coupleId);
       allow delete: if false;
     }
 
     // ─── budgetExpenses ───────────────────────────────────────────────────────
-    // Direct Firestore writes from the client.
-    // A Firestore trigger on this collection fires `recalculateBreakeven`.
     match /budgetExpenses/{expenseId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     // ─── guestGifts ───────────────────────────────────────────────────────────
-    // Manually logged gift amounts (actual cash received).
-    // Estimated gift entries (generated on RSVP confirm) are written by
-    // the `recalculateBreakeven` Cloud Function.
     match /guestGifts/{giftId} {
-      allow read:   if isOwner(resource.data.coupleId);
-      allow create: if creatingAsOwner();
-      allow update: if isOwner(resource.data.coupleId) && keepsCoupleId();
-      allow delete: if isOwner(resource.data.coupleId);
+      allow read:   if isMember(resource.data.coupleId);
+      allow create: if creatingAsMember();
+      allow update: if isMember(resource.data.coupleId) && keepsCoupleId();
+      allow delete: if isMember(resource.data.coupleId);
     }
 
     // ─── scheduledNotifications ───────────────────────────────────────────────
-    // Created and cancelled exclusively by the `updatePayment` Cloud Function.
-    // Readable by the couple for display (e.g., an in-app reminder list).
-    // No client writes — the CF uses Admin SDK for all mutations.
     match /scheduledNotifications/{notifId} {
-      allow read:  if isOwner(resource.data.coupleId);
+      allow read:  if isMember(resource.data.coupleId);
       allow write: if false;
     }
 
     // ─── shareTokens ─────────────────────────────────────────────────────────
-    // The couple creates a token from the app (authenticated).
-    // The parent accesses /share/{token} in a plain browser — no Firebase Auth.
-    // `allow read: if true` is intentional: the token UUID is a capability —
-    // anyone who possesses the URL may read the share metadata (couple names,
-    // event labels). The URL is shared deliberately by the couple via WhatsApp.
-    //
-    // Parent guest submissions go through the `submitShareGuests` Cloud Function
-    // which validates token expiry and writes guests via Admin SDK.
-    // Marking a token submitted (submitted=true, submittedAt) is also done by
-    // that Cloud Function — no client update is allowed.
+    // allow read: if true is intentional — token UUID is a capability.
     match /shareTokens/{token} {
       allow read:   if true;
-      allow create: if isAuthed() && request.resource.data.coupleId == request.auth.uid;
+      allow create: if isAuthed() && request.resource.data.coupleId == callerCoupleId();
       allow update: if false;
       allow delete: if false;
     }
 
-    // ─── Catch-all: deny anything not matched above ───────────────────────────
+    // ─── Catch-all ────────────────────────────────────────────────────────────
     match /{document=**} {
       allow read, write: if false;
     }

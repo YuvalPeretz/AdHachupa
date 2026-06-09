@@ -8,7 +8,7 @@ import { PageHeader } from '../../components/PageHeader/PageHeader';
 import { BillingUnitSelector } from '../../components/BillingUnitSelector/BillingUnitSelector';
 import type { Task, TaskPayment, BillingUnit } from '../../types';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import { fetchTaskById, fetchTaskPayment, updateTaskPayment } from '../../lib/firestore/tasks';
 import styles from './TaskDetail.module.scss';
 
@@ -20,7 +20,7 @@ export function TaskDetailPayment({ taskId }: TaskDetailPaymentProps) {
   const { t } = useTranslation('tasks');
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   const { data: task, isLoading: taskLoading } = useQuery<Task | null>({
     queryKey: ['task', taskId],

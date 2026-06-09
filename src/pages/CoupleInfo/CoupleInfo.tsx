@@ -15,6 +15,7 @@ import {
 } from '../../store/onboardingSlice';
 import type { Gender } from '../../store/onboardingSlice';
 import { functions } from '../../lib/firebase';
+import { selectAuthUid, setCoupleId } from '../../features/auth/authSlice';
 import styles from './CoupleInfo.module.scss';
 
 const { Title, Text } = Typography;
@@ -37,6 +38,7 @@ export function CoupleInfo() {
   const navigate = useNavigate();
   const { t } = useTranslation('onboarding');
   const dispatch = useAppDispatch();
+  const uid = useAppSelector(selectAuthUid);
   const coupleInfo = useAppSelector(selectCoupleInfo);
   const selectedTypes = useAppSelector(selectSelectedEventTypes);
   const eventConfigs = useAppSelector(selectEventConfigs);
@@ -47,8 +49,8 @@ export function CoupleInfo() {
     if (!coupleInfo.name1 || !coupleInfo.name2) return;
     setSubmitting(true);
     try {
-      const onboardingFn = httpsCallable(functions, 'onboarding');
-      await onboardingFn({
+      const onboardingFn = httpsCallable<unknown, { coupleId: string }>(functions, 'onboarding');
+      const result = await onboardingFn({
         name1: coupleInfo.name1,
         name2: coupleInfo.name2,
         gender1: coupleInfo.gender1,
@@ -56,6 +58,7 @@ export function CoupleInfo() {
         region: coupleInfo.region,
         isKosher: coupleInfo.isKosher,
         totalBudget: totalBudget ?? 0,
+        uid: uid ?? '',
         events: selectedTypes.map((type) => ({
           type,
           label: t(`eventSelection.events.${type}`),
@@ -63,6 +66,7 @@ export function CoupleInfo() {
           guestCount: eventConfigs[type]?.guestCount ?? 100,
         })),
       });
+      dispatch(setCoupleId(result.data.coupleId));
       dispatch(resetOnboarding());
       void navigate('/onboarding/success');
     } catch (err) {

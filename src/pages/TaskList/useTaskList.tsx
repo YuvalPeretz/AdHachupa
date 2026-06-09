@@ -12,7 +12,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { useAppSelector, useAppDispatch } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import { setActiveTaskEventId, setActiveTaskCategory } from '../../store/tasksSlice';
 import type { Task, TasksPayload } from '../../types';
 import { fetchTasks, addTask } from '../../lib/firestore/tasks';
@@ -61,7 +61,7 @@ function groupTasksByCategory(tasks: Task[]): TaskSection[] {
 
 export function useTaskList(): UseTaskListResult {
   const dispatch = useAppDispatch();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
   const activeEventId = useAppSelector((s) => s.tasks.activeEventId);
   const activeCategory = useAppSelector((s) => s.tasks.activeCategory);
   const queryClient = useQueryClient();

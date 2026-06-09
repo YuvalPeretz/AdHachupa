@@ -6,7 +6,7 @@ import { BottomSheet } from '../../../components/BottomSheet/BottomSheet';
 import type { WeddingEvent } from '../../../types';
 import { addGuest } from '../../../lib/firestore/guests';
 import { useAppSelector } from '../../../store';
-import { selectAuthUid } from '../../../features/auth/authSlice';
+import { selectCoupleId } from '../../../features/auth/authSlice';
 import styles from './AddGuestSheet.module.scss';
 
 interface AddGuestSheetProps {
@@ -37,7 +37,7 @@ const EMPTY_FORM: FormState = {
 export function AddGuestSheet({ open, onClose, events, onDuplicatesFound }: AddGuestSheetProps) {
   const { t } = useTranslation('guests');
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
   const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [duplicateWarning, setDuplicateWarning] = useState(false);
 

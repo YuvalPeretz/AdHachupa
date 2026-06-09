@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import type { Guest, RsvpStatus, WeddingEvent } from '../../types';
 import { fetchGuestById, updateGuest, GUESTS_SEAM_EVENTS } from '../../lib/firestore/guests';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 
 export interface UseGuestDetailResult {
   guest: Guest | null | undefined;
@@ -30,7 +30,7 @@ export interface UseGuestDetailResult {
 export function useGuestDetail(guestId: string): UseGuestDetailResult {
   const { t } = useTranslation('guests');
   const queryClient = useQueryClient();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
   const [messageApi, contextHolder] = message.useMessage();
 
   const { data: guest, isLoading } = useQuery<Guest | null>({

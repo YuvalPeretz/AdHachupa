@@ -13,7 +13,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import { useAppSelector, useAppDispatch } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectCoupleId } from '../../features/auth/authSlice';
 import { setActiveGuestEventId } from '../../store/guestsSlice';
 import type { Guest } from '../../types';
 import { fetchGuests } from '../../lib/firestore/guests';
@@ -83,7 +83,7 @@ function groupGuests(guests: Guest[]): GuestSection[] {
 
 export function useGuestList(): UseGuestListResult {
   const dispatch = useAppDispatch();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
   const activeEventId = useAppSelector((s) => s.guests.activeEventId);
 
   const { data, isLoading } = useQuery<GuestsPayload>({

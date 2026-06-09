@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { Button, Flex, Input, Modal, Skeleton, Switch, Typography } from 'antd';
+import { Button, Flex, Input, Modal, Skeleton, Switch, Typography, message } from 'antd';
+import { MdContentCopy, MdCheck } from 'react-icons/md';
 import { httpsCallable } from 'firebase/functions';
 import { useQuery } from '@tanstack/react-query';
 import { getCouple } from '../../lib/firestore/couples';
+import { createCoupleInvite } from '../../lib/firestore/coupleInvites';
 import { useAppSelector } from '../../store';
-import { selectAuthUid } from '../../features/auth/authSlice';
+import { selectAuthUid, selectCoupleId } from '../../features/auth/authSlice';
 import { functions, signOutUser } from '../../lib/firebase';
 import styles from './Settings.module.scss';
 
@@ -19,7 +21,8 @@ export function Settings() {
   const { t } = useTranslation('settings');
   const { t: tOnb } = useTranslation('onboarding');
   const navigate = useNavigate();
-  const coupleId = useAppSelector(selectAuthUid) ?? '';
+  const uid = useAppSelector(selectAuthUid) ?? '';
+  const coupleId = useAppSelector(selectCoupleId) ?? '';
 
   const [selected, setSelected] = useState<Set<Category>>(new Set());
   const [deleteAccount, setDeleteAccount] = useState(false);
@@ -27,11 +30,17 @@ export function Settings() {
   const [confirmText, setConfirmText] = useState('');
   const [deleting, setDeleting] = useState(false);
 
+  const [inviteLink, setInviteLink] = useState<string | null>(null);
+  const [generatingInvite, setGeneratingInvite] = useState(false);
+  const [copied, setCopied] = useState(false);
+
   const { data: couple, isLoading } = useQuery({
     queryKey: ['couple', coupleId],
     queryFn: () => getCouple(coupleId),
     enabled: Boolean(coupleId),
   });
+
+  const partnerJoined = (couple?.memberUids?.length ?? 0) > 1;
 
   function toggle(cat: Category) {
     setSelected((prev) => {
@@ -69,6 +78,28 @@ export function Settings() {
     void navigate('/onboarding/welcome');
   }
 
+  async function handleGenerateInvite() {
+    if (!coupleId || !uid || !couple) return;
+    setGeneratingInvite(true);
+    try {
+      const coupleNames = `${couple.name1} ו${couple.name2}`;
+      const token = await createCoupleInvite(coupleId, uid, coupleNames);
+      const link = `${window.location.origin}/join/${token}`;
+      setInviteLink(link);
+    } catch {
+      void message.error('שגיאה ביצירת הקישור. נסו שוב.');
+    } finally {
+      setGeneratingInvite(false);
+    }
+  }
+
+  async function handleCopy() {
+    if (!inviteLink) return;
+    await navigator.clipboard.writeText(inviteLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
   const selectedLabels = [
     ...[...selected].map((cat) => t(`danger.categories.${cat}.label`)),
     ...(deleteAccount ? [t('danger.deleteAccount.label')] : []),
@@ -98,6 +129,50 @@ export function Settings() {
             />
           </Flex>
         ) : null}
+      </div>
+
+      {/* ── Invite partner ──────────────────────────────── */}
+      <p className={styles.sectionLabel}>הזמנת בן/בת זוג</p>
+      <div className={styles.card} data-testid="settings-invite-card">
+        {partnerJoined ? (
+          <Text style={{ fontSize: 14, color: '#A8C5A0', fontWeight: 500 }}>
+            ✓ בן/בת הזוג כבר הצטרף/ה לחשבון
+          </Text>
+        ) : (
+          <Flex vertical gap={12}>
+            <Text style={{ fontSize: 14, color: 'rgba(45,45,45,0.65)' }}>
+              שלחו קישור לבן/בת הזוג כדי שיוכלו לנהל את האירוע יחד איתכם
+            </Text>
+            {inviteLink ? (
+              <Flex gap={8} align="center">
+                <Input
+                  value={inviteLink}
+                  readOnly
+                  size="small"
+                  style={{ fontFamily: 'monospace', fontSize: 12 }}
+                  data-testid="invite-link-input"
+                />
+                <Button
+                  icon={copied ? <MdCheck /> : <MdContentCopy />}
+                  onClick={() => void handleCopy()}
+                  size="small"
+                  data-testid="copy-invite-btn"
+                >
+                  {copied ? 'הועתק' : 'העתק'}
+                </Button>
+              </Flex>
+            ) : (
+              <Button
+                onClick={() => void handleGenerateInvite()}
+                loading={generatingInvite}
+                style={{ backgroundColor: '#C9A97A', borderColor: '#C9A97A', color: '#fff' }}
+                data-testid="generate-invite-btn"
+              >
+                צור קישור הזמנה
+              </Button>
+            )}
+          </Flex>
+        )}
       </div>
 
       {/* ── Account ─────────────────────────────────────── */}
@@ -138,7 +213,6 @@ export function Settings() {
             </div>
           ))}
 
-          {/* Account deletion — visually separated */}
           <div className={`${styles.deleteRow} ${styles.deleteRowAccount}`}>
             <Flex justify="space-between" align="center" gap={12}>
               <div className={styles.deleteRowText}>

@@ -19,6 +19,7 @@ import { TaskList } from './pages/TaskList/TaskList';
 import { TaskDetail } from './pages/TaskDetail/TaskDetail';
 import { Budget } from './pages/Budget/Budget';
 import { Settings } from './pages/Settings/Settings';
+import { JoinCouple } from './pages/JoinCouple/JoinCouple';
 // TEST ONLY - remove after Phase 0
 import { PageHeaderWithBackPage } from './components/PageHeader/PageHeaderWithBackPage';
 // TEST ONLY - remove after Phase 0
@@ -124,6 +125,11 @@ export const router = createBrowserRouter([
   {
     path: '/share/:token',
     element: <ParentShare />,
+  },
+  // Partner invite — standalone; handles its own auth state
+  {
+    path: '/join/:token',
+    element: <JoinCouple />,
   },
   {
     path: '/tasks',
