@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 880" font-family="'Segoe UI',Arial,sans-serif">
+<defs>
+  <marker id="arr" viewBox="0 0 8 6" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#888"/></marker>
+  <marker id="arr-pink" viewBox="0 0 8 6" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#C8A0B0"/></marker>
+  <marker id="arr-gold" viewBox="0 0 8 6" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#C9A97A"/></marker>
+  <marker id="arr-sage" viewBox="0 0 8 6" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#6AAA66"/></marker>
+  <marker id="arr-task" viewBox="0 0 8 6" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#B88840"/></marker>
+  <marker id="arr-blue" viewBox="0 0 8 6" markerWidth="7" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#4AAAC8"/></marker>
+  <filter id="sh" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#00000012"/></filter>
+</defs>
+
+<!-- Background -->
+<rect width="1600" height="880" fill="#EDE8E2"/>
+
+<!-- ═══ TITLE ═══ -->
+<text x="800" y="26" text-anchor="middle" font-size="20" font-weight="700" fill="#2D2D2D">WeddingApp — Screen Architecture</text>
+<text x="800" y="44" text-anchor="middle" font-size="11.5" fill="#888">Web app · Mobile-first responsive · Hebrew RTL · 20 screens</text>
+
+<!-- LEGEND -->
+<rect x="1382" y="5" width="210" height="52" rx="6" fill="white" stroke="#ddd"/>
+<text x="1487" y="18" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#666">LEGEND</text>
+<rect x="1390" y="24" width="10" height="8" rx="2" fill="#F2C4CE"/><text x="1404" y="32" font-size="9" fill="#555">Onboarding</text>
+<rect x="1390" y="37" width="10" height="8" rx="2" fill="#A8C5A0"/><text x="1404" y="45" font-size="9" fill="#555">Guest area</text>
+<rect x="1474" y="24" width="10" height="8" rx="2" fill="#D4A96A"/><text x="1488" y="32" font-size="9" fill="#555">Task area</text>
+<rect x="1474" y="37" width="10" height="8" rx="2" fill="#95C4E0"/><text x="1488" y="45" font-size="9" fill="#555">Budget area</text>
+
+<!-- ═══════════════════════════════════════
+     ONBOARDING STRIP  x=10 w=242 y=57–800
+     ═══════════════════════════════════════ -->
+<rect x="10" y="57" width="242" height="748" rx="10" fill="#FBE8ED" stroke="#F2C4CE" stroke-width="1.5" filter="url(#sh)"/>
+<text x="131" y="72" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#8B3A4A" letter-spacing="1">ONBOARDING FLOW</text>
+
+<!-- Down arrows between onboarding boxes -->
+<line x1="131" y1="160" x2="131" y2="166" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+<line x1="131" y1="250" x2="131" y2="256" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+<line x1="131" y1="340" x2="131" y2="346" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+<line x1="131" y1="430" x2="131" y2="436" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+<line x1="131" y1="520" x2="131" y2="526" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+<line x1="131" y1="610" x2="131" y2="616" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+<line x1="131" y1="700" x2="131" y2="706" stroke="#C8A0B0" stroke-width="1.8" marker-end="url(#arr-pink)"/>
+
+<!-- BOX 1: Splash y=77 -->
+<rect x="18" y="77" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="77" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="89" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="91" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 0</text>
+<text x="131" y="112" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Splash Screen</text>
+<text x="26" y="126" font-size="9.5" fill="#555">· Watercolor floral illustration (full-screen)</text>
+<text x="26" y="139" font-size="9.5" fill="#555">· App logo + tagline centered</text>
+<text x="26" y="152" font-size="9.5" fill="#555">· Pulsing 3-dot loader</text>
+
+<!-- BOX 2: Welcome y=167 -->
+<rect x="18" y="167" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="167" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="179" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="181" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 1</text>
+<text x="131" y="202" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Welcome</text>
+<text x="26" y="216" font-size="9.5" fill="#555">· Couple silhouette illustration</text>
+<text x="26" y="229" font-size="9.5" fill="#555">· "בואו נתחיל" CTA (champagne gold)</text>
+<text x="26" y="242" font-size="9.5" fill="#555">· Login secondary link</text>
+
+<!-- BOX 3: Event Selection y=257 -->
+<rect x="18" y="257" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="257" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="269" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="271" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 2</text>
+<text x="131" y="292" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Event Selection</text>
+<text x="26" y="306" font-size="9.5" fill="#555">· 3×2 card grid — 6 event types</text>
+<text x="26" y="319" font-size="9.5" fill="#555">· Multi-select + gold checkmark state</text>
+<text x="26" y="332" font-size="9.5" fill="#555">· "הוסף אירוע אחר" link</text>
+
+<!-- BOX 4: Guest Count & Date y=347 -->
+<rect x="18" y="347" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="347" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="359" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="361" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 3</text>
+<text x="131" y="382" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Guest Count &amp; Date</text>
+<text x="26" y="396" font-size="9.5" fill="#555">· Section card per selected event</text>
+<text x="26" y="409" font-size="9.5" fill="#555">· Numeric stepper + month/year picker</text>
+<text x="26" y="422" font-size="9.5" fill="#555">· "Skip date" checkbox</text>
+
+<!-- BOX 5: Priorities y=437 -->
+<rect x="18" y="437" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="437" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="449" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="451" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 4</text>
+<text x="131" y="472" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Priorities &amp; Vibe</text>
+<text x="26" y="486" font-size="9.5" fill="#555">· 1–5 star rating rows (RTL layout)</text>
+<text x="26" y="499" font-size="9.5" fill="#555">· 8 categories (4 shown as example)</text>
+<text x="26" y="512" font-size="9.5" fill="#555">· e.g. music / photo / catering / venue</text>
+
+<!-- BOX 6: Budget Range y=527 -->
+<rect x="18" y="527" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="527" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="539" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="541" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 5</text>
+<text x="131" y="562" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Budget Range</text>
+<text x="26" y="576" font-size="9.5" fill="#555">· 4 selectable budget tier cards</text>
+<text x="26" y="589" font-size="9.5" fill="#555">· &lt;50K / 50–100K / 100–200K / 200K+</text>
+<text x="26" y="602" font-size="9.5" fill="#555">· "Editable anytime" helper text</text>
+
+<!-- BOX 7: Couple Info y=617 -->
+<rect x="18" y="617" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="617" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="629" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="631" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · STEP 6</text>
+<text x="131" y="652" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Couple Info</text>
+<text x="26" y="666" font-size="9.5" fill="#555">· Name fields × 2 (side by side, RTL)</text>
+<text x="26" y="679" font-size="9.5" fill="#555">· Gender chip selector per partner</text>
+<text x="26" y="692" font-size="9.5" fill="#555">· Region dropdown + Kosher toggle</text>
+
+<!-- BOX 8: Success y=707 -->
+<rect x="18" y="707" width="226" height="82" rx="7" fill="white" stroke="#f0dde5" stroke-width="1" filter="url(#sh)"/>
+<rect x="18" y="707" width="226" height="21" rx="7" fill="#F2C4CE"/>
+<rect x="18" y="719" width="226" height="9" fill="#F2C4CE"/>
+<text x="131" y="721" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A3040">PAGE · FINAL</text>
+<text x="131" y="742" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2D2D2D">Onboarding Success</text>
+<text x="26" y="756" font-size="9.5" fill="#555">· Celebration watercolor illustration</text>
+<text x="26" y="769" font-size="9.5" fill="#555">· Gold checkmark circle</text>
+<text x="26" y="782" font-size="9.5" fill="#555">· "Go to Dashboard" CTA</text>
+
+<!-- SUCCESS → DASHBOARD curved arrow -->
+<path d="M 244 748 C 400 748 400 122 537 122" stroke="#C9A97A" stroke-width="2" fill="none" stroke-dasharray="6 3" marker-end="url(#arr-gold)"/>
+<text x="356" y="742" font-size="9" fill="#C9A97A" text-anchor="middle">onboarding complete</text>
+
+<!-- ═══════════════════════════════════════
+     DASHBOARD  x=537 y=62 w=330 h=120
+     ═══════════════════════════════════════ -->
+<rect x="537" y="62" width="330" height="120" rx="8" fill="white" stroke="#e8d5a8" stroke-width="1.5" filter="url(#sh)"/>
+<rect x="537" y="62" width="330" height="22" rx="8" fill="#C9A97A"/>
+<rect x="537" y="74" width="330" height="10" fill="#C9A97A"/>
+<text x="702" y="77" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">HUB PAGE</text>
+<text x="702" y="99" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Dashboard / דשבורד</text>
+<text x="545" y="114" font-size="9.5" fill="#555">· Upcoming event hero card (countdown + task progress bar)</text>
+<text x="545" y="127" font-size="9.5" fill="#555">· Budget summary: spent / total / gift income / breakeven delta</text>
+<text x="545" y="140" font-size="9.5" fill="#555">· Selected vendors chips (horizontal scroll, status badges)</text>
+<text x="545" y="153" font-size="9.5" fill="#555">· Other events compact list</text>
+<text x="545" y="168" font-size="9" fill="#999" font-style="italic">reads: Couple · Events · Tasks · Vendors · Budget</text>
+
+<!-- BOTTOM NAV BAR indicator -->
+<rect x="262" y="192" width="1085" height="22" rx="5" fill="#2D2D2D"/>
+<text x="398" y="207" text-anchor="middle" font-size="9.5" fill="#C9A97A" font-weight="bold">🏠 Home (בית)</text>
+<text x="669" y="207" text-anchor="middle" font-size="9.5" fill="#aaa">👥 Guests (מוזמנים)</text>
+<text x="940" y="207" text-anchor="middle" font-size="9.5" fill="#aaa">✅ Tasks (משימות)</text>
+<text x="1211" y="207" text-anchor="middle" font-size="9.5" fill="#aaa">💰 Budget (תקציב)</text>
+
+<!-- Dashboard → columns (dashed nav tap arrows) -->
+<line x1="630" y1="182" x2="409" y2="214" stroke="#aaa" stroke-width="1.3" stroke-dasharray="3 2" marker-end="url(#arr)"/>
+<line x1="702" y1="182" x2="802" y2="214" stroke="#aaa" stroke-width="1.3" stroke-dasharray="3 2" marker-end="url(#arr)"/>
+<line x1="774" y1="182" x2="1197" y2="214" stroke="#aaa" stroke-width="1.3" stroke-dasharray="3 2" marker-end="url(#arr)"/>
+
+<!-- ═══════════════════════════════════════
+     GUEST COLUMN  x=262 w=295
+     ═══════════════════════════════════════ -->
+
+<!-- Guest List Main y=222 h=115 -->
+<rect x="262" y="222" width="295" height="115" rx="8" fill="white" stroke="#c5dcc2" stroke-width="1" filter="url(#sh)"/>
+<rect x="262" y="222" width="295" height="21" rx="8" fill="#A8C5A0"/>
+<rect x="262" y="234" width="295" height="9" fill="#A8C5A0"/>
+<text x="409" y="236" text-anchor="middle" font-size="9" font-weight="bold" fill="#2A5C2A">PAGE</text>
+<text x="409" y="257" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Guest List / רשימת מוזמנים</text>
+<text x="270" y="272" font-size="9.5" fill="#555">· Event pill tabs (חתונה / חינה / מסיבה / שב"ח)</text>
+<text x="270" y="285" font-size="9.5" fill="#555">· 2×2 RSVP stats grid (total / confirmed / pending / cancelled)</text>
+<text x="270" y="298" font-size="9.5" fill="#555">· Duplicate detection banner (blush rose)</text>
+<text x="270" y="311" font-size="9.5" fill="#555">· Guest rows grouped by מי הזמין (section headers)</text>
+<text x="270" y="324" font-size="9.5" fill="#555">· FAB (+) add guest</text>
+
+<!-- Guest List → Guest Detail (tap row) -->
+<line x1="409" y1="337" x2="409" y2="353" stroke="#6AAA66" stroke-width="1.8" marker-end="url(#arr-sage)"/>
+<text x="432" y="349" font-size="8.5" fill="#6AAA66">tap row</text>
+
+<!-- Guest List → Parent Share (share link, left-side route) -->
+<path d="M 263 300 L 249 300 L 249 488 L 263 488" fill="none" stroke="#6AAA66" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#arr-sage)"/>
+<text x="237" y="397" font-size="8" fill="#6AAA66" text-anchor="middle" transform="rotate(-90,237,397)">share link</text>
+
+<!-- Guest Detail y=355 h=115 -->
+<rect x="262" y="355" width="295" height="115" rx="8" fill="white" stroke="#c5dcc2" stroke-width="1" filter="url(#sh)"/>
+<rect x="262" y="355" width="295" height="21" rx="8" fill="#A8C5A0"/>
+<rect x="262" y="367" width="295" height="9" fill="#A8C5A0"/>
+<text x="409" y="369" text-anchor="middle" font-size="9" font-weight="bold" fill="#2A5C2A">PAGE</text>
+<text x="409" y="390" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Guest Detail / פרטי מוזמן</text>
+<text x="270" y="405" font-size="9.5" fill="#555">· Avatar circle + name + RSVP status badge</text>
+<text x="270" y="418" font-size="9.5" fill="#555">· 5 section cards: contact / RSVP / events / assign / notes</text>
+<text x="270" y="431" font-size="9.5" fill="#555">· RSVP chips (green=אישר / amber=ממתין / red=ביטל)</text>
+<text x="270" y="444" font-size="9.5" fill="#555">· Multi-event chips (which events invited to)</text>
+<text x="270" y="457" font-size="9.5" fill="#555">· Save (gold) + Delete (red danger section)</text>
+
+<!-- Parent Share Web y=488 h=110 -->
+<rect x="262" y="488" width="295" height="110" rx="8" fill="#F5F5F5" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 3" filter="url(#sh)"/>
+<rect x="262" y="488" width="295" height="21" rx="8" fill="#BDBDBD"/>
+<rect x="262" y="500" width="295" height="9" fill="#BDBDBD"/>
+<text x="409" y="502" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">WEB-ONLY VIEW</text>
+<text x="409" y="523" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Parent Share</text>
+<text x="270" y="538" font-size="9.5" fill="#777">· No bottom nav (web standalone page)</text>
+<text x="270" y="551" font-size="9.5" fill="#777">· Add guests form (name / phone / +count)</text>
+<text x="270" y="564" font-size="9.5" fill="#777">· Session list (guests added this session)</text>
+<text x="270" y="577" font-size="9.5" fill="#777">· "שלח רשימה" submit → goes to couple</text>
+<text x="270" y="590" font-size="9.5" fill="#777">· Footer: "sent directly to the couple"</text>
+
+<!-- ═══════════════════════════════════════
+     TASK COLUMN  x=572 w=460
+     ═══════════════════════════════════════ -->
+
+<!-- Task List Main y=222 h=115 -->
+<rect x="572" y="222" width="460" height="115" rx="8" fill="white" stroke="#ddc8a0" stroke-width="1" filter="url(#sh)"/>
+<rect x="572" y="222" width="460" height="21" rx="8" fill="#D4A96A"/>
+<rect x="572" y="234" width="460" height="9" fill="#D4A96A"/>
+<text x="802" y="236" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">PAGE</text>
+<text x="802" y="257" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Tasks List / משימות</text>
+<text x="580" y="272" font-size="9.5" fill="#555">· Event pill tabs + 7 category filter chips (scroll): all / vendors / payments / clothing / grooming / logistics / misc</text>
+<text x="580" y="285" font-size="9.5" fill="#555">· Task rows: checkbox | category icon | name | status badge | due date tag | RTL chevron ‹</text>
+<text x="580" y="298" font-size="9.5" fill="#555">· Status colors: טרם התחיל (gray outline) · בתהליך (amber) · סגור (sage green)</text>
+<text x="580" y="311" font-size="9.5" fill="#555">· Priority chip: הכרחי / לוגיסטי / אסתטי / אישי — each with distinct color</text>
+<text x="580" y="324" font-size="9.5" fill="#555">· FAB (+) add task · Empty state illustration</text>
+
+<!-- Task List → Task Detail Vendor (left type) -->
+<line x1="700" y1="337" x2="679" y2="353" stroke="#B88840" stroke-width="1.5" marker-end="url(#arr-task)"/>
+<!-- Task List → Task Detail Payment (right type) -->
+<line x1="820" y1="337" x2="909" y2="353" stroke="#B88840" stroke-width="1.5" marker-end="url(#arr-task)"/>
+<text x="802" y="349" text-anchor="middle" font-size="8.5" fill="#B88840">tap task row (by type)</text>
+
+<!-- Task List → Add Task Modal (FAB, routed right side) -->
+<path d="M 1032 270 L 1043 270 L 1043 611 L 1032 611" fill="none" stroke="#B88840" stroke-width="1.5" stroke-dasharray="4 2" marker-end="url(#arr-task)"/>
+<text x="1055" y="443" font-size="8.5" fill="#B88840">FAB (+)</text>
+
+<!-- Task Detail — Vendor  x=572 y=355 w=215 h=115 -->
+<rect x="572" y="355" width="215" height="115" rx="8" fill="white" stroke="#ddc8a0" stroke-width="1" filter="url(#sh)"/>
+<rect x="572" y="355" width="215" height="21" rx="8" fill="#D4A96A"/>
+<rect x="572" y="367" width="215" height="9" fill="#D4A96A"/>
+<text x="679" y="369" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">PAGE · VENDOR TYPE</text>
+<text x="679" y="390" text-anchor="middle" font-size="12" font-weight="bold" fill="#2D2D2D">Task Detail — Vendor</text>
+<text x="580" y="405" font-size="9.5" fill="#555">· Status selector + priority chip</text>
+<text x="580" y="418" font-size="9.5" fill="#555">· Vendor cards: photo / price range / stars</text>
+<text x="580" y="431" font-size="9.5" fill="#555">· Vendor: email · phone · payment terms</text>
+<text x="580" y="444" font-size="9.5" fill="#555">· Advance paid / balance / last payment date</text>
+<text x="580" y="457" font-size="9.5" fill="#555">· Status: נבחר / בשיקול / נדחה</text>
+
+<!-- Task Detail — Payment  x=802 y=355 w=215 h=115 -->
+<rect x="802" y="355" width="215" height="115" rx="8" fill="white" stroke="#ddc8a0" stroke-width="1" filter="url(#sh)"/>
+<rect x="802" y="355" width="215" height="21" rx="8" fill="#D4A96A"/>
+<rect x="802" y="367" width="215" height="9" fill="#D4A96A"/>
+<text x="909" y="369" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">PAGE · PAYMENT TYPE</text>
+<text x="909" y="390" text-anchor="middle" font-size="12" font-weight="bold" fill="#2D2D2D">Task Detail — Payment</text>
+<text x="810" y="405" font-size="9.5" fill="#555">· Total amount + billing unit chip</text>
+<text x="810" y="418" font-size="9.5" fill="#555">· Unit: per item / per guest / per hour</text>
+<text x="810" y="431" font-size="9.5" fill="#555">· Advance paid + remaining balance</text>
+<text x="810" y="444" font-size="9.5" fill="#555">· Last payment deadline + status toggle</text>
+<text x="810" y="457" font-size="9.5" fill="#555">· Linked vendor compact card</text>
+
+<!-- Task Detail — Decision  x=572 y=483 w=215 h=110 -->
+<rect x="572" y="483" width="215" height="110" rx="8" fill="white" stroke="#ddc8a0" stroke-width="1" filter="url(#sh)"/>
+<rect x="572" y="483" width="215" height="21" rx="8" fill="#D4A96A"/>
+<rect x="572" y="495" width="215" height="9" fill="#D4A96A"/>
+<text x="679" y="497" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">PAGE · DECISION TYPE</text>
+<text x="679" y="518" text-anchor="middle" font-size="12" font-weight="bold" fill="#2D2D2D">Task Detail — Decision</text>
+<text x="580" y="533" font-size="9.5" fill="#555">· Option cards side-by-side (RTL)</text>
+<text x="580" y="546" font-size="9.5" fill="#555">· Pros / cons columns per option</text>
+<text x="580" y="559" font-size="9.5" fill="#555">· "+ Add option" dashed card</text>
+<text x="580" y="572" font-size="9.5" fill="#555">· Final decision input field (gold highlight)</text>
+<text x="580" y="585" font-size="9.5" fill="#555">· Notes + Save button</text>
+
+<!-- Task Detail — Reminder  x=802 y=483 w=215 h=110 -->
+<rect x="802" y="483" width="215" height="110" rx="8" fill="white" stroke="#ddc8a0" stroke-width="1" filter="url(#sh)"/>
+<rect x="802" y="483" width="215" height="21" rx="8" fill="#D4A96A"/>
+<rect x="802" y="495" width="215" height="9" fill="#D4A96A"/>
+<text x="909" y="497" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">PAGE · REMINDER TYPE</text>
+<text x="909" y="518" text-anchor="middle" font-size="12" font-weight="bold" fill="#2D2D2D">Task Detail — Reminder</text>
+<text x="810" y="533" font-size="9.5" fill="#555">· Date + time picker</text>
+<text x="810" y="546" font-size="9.5" fill="#555">· Push notification toggle</text>
+<text x="810" y="559" font-size="9.5" fill="#555">· Dependency chip (blocking task)</text>
+<text x="810" y="572" font-size="9.5" fill="#555">· Linked related task chip</text>
+<text x="810" y="585" font-size="9.5" fill="#555">· Notes + Save button</text>
+
+<!-- "4 variants" label between rows -->
+<text x="802" y="478" text-anchor="middle" font-size="8" fill="#B88840" font-style="italic">4 task type variants — rendered based on task.type field</text>
+
+<!-- Add Task Modal  x=572 y=611 w=460 h=100 -->
+<rect x="572" y="611" width="460" height="100" rx="8" fill="#FFFCF5" stroke="#ddc8a0" stroke-width="1.5" stroke-dasharray="6 3" filter="url(#sh)"/>
+<rect x="572" y="611" width="460" height="21" rx="8" fill="#E8C490"/>
+<rect x="572" y="623" width="460" height="9" fill="#E8C490"/>
+<text x="802" y="625" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">BOTTOM SHEET MODAL</text>
+<text x="802" y="646" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Add New Task / משימה חדשה</text>
+<text x="580" y="661" font-size="9.5" fill="#777">· Task name (required) · Type: Vendor / Payment / Decision / Reminder (icon selector)</text>
+<text x="580" y="674" font-size="9.5" fill="#777">· Category chips · Priority: הכרחי / לוגיסטי / אסתטי / אישי · Responsible person chip</text>
+<text x="580" y="687" font-size="9.5" fill="#777">· Event dropdown · Due date picker (optional) · Notes textarea (optional)</text>
+<text x="580" y="700" font-size="9.5" fill="#777">· "הוסף משימה" primary button (gold) · "ביטול" link</text>
+
+<!-- ═══════════════════════════════════════
+     BUDGET COLUMN  x=1047 w=300
+     ═══════════════════════════════════════ -->
+
+<!-- Budget Overview y=222 h=115 -->
+<rect x="1047" y="222" width="300" height="115" rx="8" fill="white" stroke="#a8cce0" stroke-width="1" filter="url(#sh)"/>
+<rect x="1047" y="222" width="300" height="21" rx="8" fill="#95C4E0"/>
+<rect x="1047" y="234" width="300" height="9" fill="#95C4E0"/>
+<text x="1197" y="236" text-anchor="middle" font-size="9" font-weight="bold" fill="#1A3A5A">PAGE</text>
+<text x="1197" y="257" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Budget Overview / תקציב</text>
+<text x="1055" y="272" font-size="9.5" fill="#555">· Champagne gold donut ring (% spent of total)</text>
+<text x="1055" y="285" font-size="9.5" fill="#555">· Gifts &amp; breakeven card: income − expenses delta</text>
+<text x="1055" y="298" font-size="9.5" fill="#555">· Scrollable category rows: icon / name / spent / budget / bar</text>
+<text x="1055" y="311" font-size="9.5" fill="#555">· Bars fill right-to-left (RTL)</text>
+<text x="1055" y="324" font-size="9.5" fill="#555">· FAB (+) add expense · "Edit total budget" link</text>
+
+<!-- Budget → Add Expense arrow -->
+<line x1="1197" y1="337" x2="1197" y2="353" stroke="#4AAAC8" stroke-width="1.8" stroke-dasharray="4 2" marker-end="url(#arr-blue)"/>
+<text x="1240" y="349" font-size="8.5" fill="#4AAAC8">FAB (+)</text>
+
+<!-- Add Expense Modal  x=1047 y=355 w=300 h=115 -->
+<rect x="1047" y="355" width="300" height="115" rx="8" fill="#F5FAFF" stroke="#a8cce0" stroke-width="1.5" stroke-dasharray="6 3" filter="url(#sh)"/>
+<rect x="1047" y="355" width="300" height="21" rx="8" fill="#7AAEC8"/>
+<rect x="1047" y="367" width="300" height="9" fill="#7AAEC8"/>
+<text x="1197" y="369" text-anchor="middle" font-size="9" font-weight="bold" fill="#1A3A5A">BOTTOM SHEET MODAL</text>
+<text x="1197" y="390" text-anchor="middle" font-size="13" font-weight="bold" fill="#2D2D2D">Add Expense / הוסף הוצאה</text>
+<text x="1055" y="405" font-size="9.5" fill="#777">· Item name + category chips</text>
+<text x="1055" y="418" font-size="9.5" fill="#777">· Estimated cost + actual cost (₪ inputs)</text>
+<text x="1055" y="431" font-size="9.5" fill="#777">· Billing unit: per item / per guest / per hour</text>
+<text x="1055" y="444" font-size="9.5" fill="#777">· Mandatory / optional chip · Vendor link</text>
+<text x="1055" y="457" font-size="9.5" fill="#777">· Event + responsible person + notes</text>
+
+<!-- ═══════════════════════════════════════
+     DATA LAYER  y=730 h=122
+     6 boxes: x=2,270,538,806,1074,1342 w=253
+     ═══════════════════════════════════════ -->
+<rect x="1" y="724" width="1598" height="130" rx="8" fill="#E0DAD3" stroke="#ccc" stroke-width="1"/>
+<text x="800" y="739" text-anchor="middle" font-size="10" font-weight="bold" fill="#666" letter-spacing="1">DATA MODELS</text>
+
+<!-- DB1: Couple x=2 -->
+<rect x="2" y="746" width="253" height="102" rx="6" fill="white" stroke="#ddd"/>
+<rect x="2" y="746" width="253" height="19" rx="6" fill="#C8C0B8"/>
+<rect x="2" y="757" width="253" height="8" fill="#C8C0B8"/>
+<text x="128" y="759" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">👫  COUPLE</text>
+<text x="10" y="776" font-size="9" fill="#555">id · name1 · name2</text>
+<text x="10" y="789" font-size="9" fill="#555">gender1 · gender2 · region · isKosher</text>
+<text x="10" y="802" font-size="9" fill="#555">budgetRange · createdAt</text>
+<text x="10" y="815" font-size="9" fill="#555">subscriptionTier</text>
+<text x="10" y="840" font-size="9" fill="#888" font-style="italic">owns: all events, guests, tasks, budget</text>
+
+<!-- DB2: Event x=270 -->
+<rect x="270" y="746" width="253" height="102" rx="6" fill="white" stroke="#ddd"/>
+<rect x="270" y="746" width="253" height="19" rx="6" fill="#C8C0B8"/>
+<rect x="270" y="757" width="253" height="8" fill="#C8C0B8"/>
+<text x="396" y="759" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">📅  EVENT</text>
+<text x="278" y="776" font-size="9" fill="#555">id · coupleId · type · date · venue</text>
+<text x="278" y="789" font-size="9" fill="#555">guestCountExpected · status · notes</text>
+<text x="278" y="802" font-size="9" fill="#555">types: חתונה / חינה / מסיבה</text>
+<text x="278" y="815" font-size="9" fill="#555">שבת חתן / מקווה / קבלת פנים</text>
+<text x="278" y="840" font-size="9" fill="#888" font-style="italic">drives: event pill tabs across all pages</text>
+
+<!-- DB3: Guest x=538 -->
+<rect x="538" y="746" width="253" height="102" rx="6" fill="white" stroke="#ddd"/>
+<rect x="538" y="746" width="253" height="19" rx="6" fill="#C8D8C5"/>
+<rect x="538" y="757" width="253" height="8" fill="#C8D8C5"/>
+<text x="664" y="759" text-anchor="middle" font-size="9" font-weight="bold" fill="#2A5C2A">👥  GUEST</text>
+<text x="546" y="776" font-size="9" fill="#555">id · name · phone · email</text>
+<text x="546" y="789" font-size="9" fill="#555">rsvpStatus · invitedBy · tableNo</text>
+<text x="546" y="802" font-size="9" fill="#555">plusOnes · eventIds[] · notes</text>
+<text x="546" y="815" font-size="9" fill="#555">rsvp: אישר / ממתין / ביטל</text>
+<text x="546" y="840" font-size="9" fill="#888" font-style="italic">grouped by: invitedBy (section headers)</text>
+
+<!-- DB4: Task/Item x=806 -->
+<rect x="806" y="746" width="253" height="102" rx="6" fill="white" stroke="#ddd"/>
+<rect x="806" y="746" width="253" height="19" rx="6" fill="#DDD0B8"/>
+<rect x="806" y="757" width="253" height="8" fill="#DDD0B8"/>
+<text x="932" y="759" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">✅  TASK / ITEM</text>
+<text x="814" y="776" font-size="9" fill="#555">id · name · category · type · priority</text>
+<text x="814" y="789" font-size="9" fill="#555">status · responsible · eventId</text>
+<text x="814" y="802" font-size="9" fill="#555">estimatedCost · actualCost · billingUnit</text>
+<text x="814" y="815" font-size="9" fill="#555">closingDate · execDate · dependencies[]</text>
+<text x="814" y="840" font-size="9" fill="#888" font-style="italic">type drives: Vendor / Payment / Decision / Reminder view</text>
+
+<!-- DB5: Vendor x=1074 -->
+<rect x="1074" y="746" width="253" height="102" rx="6" fill="white" stroke="#ddd"/>
+<rect x="1074" y="746" width="253" height="19" rx="6" fill="#DDD0B8"/>
+<rect x="1074" y="757" width="253" height="8" fill="#DDD0B8"/>
+<text x="1200" y="759" text-anchor="middle" font-size="9" font-weight="bold" fill="#5A3C10">🏪  VENDOR</text>
+<text x="1082" y="776" font-size="9" fill="#555">id · name · category · email · phone</text>
+<text x="1082" y="789" font-size="9" fill="#555">paymentTerms · advancePaid</text>
+<text x="1082" y="802" font-size="9" fill="#555">balanceDue · lastPaymentDate</text>
+<text x="1082" y="815" font-size="9" fill="#555">paymentStatus · rating · notes</text>
+<text x="1082" y="840" font-size="9" fill="#888" font-style="italic">linked from Task (vendor type) + Budget rows</text>
+
+<!-- DB6: Budget x=1342 -->
+<rect x="1342" y="746" width="253" height="102" rx="6" fill="white" stroke="#ddd"/>
+<rect x="1342" y="746" width="253" height="19" rx="6" fill="#B8D0E0"/>
+<rect x="1342" y="757" width="253" height="8" fill="#B8D0E0"/>
+<text x="1468" y="759" text-anchor="middle" font-size="9" font-weight="bold" fill="#1A3A5A">💰  BUDGET</text>
+<text x="1350" y="776" font-size="9" fill="#555">totalBudget · giftIncome · breakeven</text>
+<text x="1350" y="789" font-size="9" fill="#555">categories[{ name, allocated, spent }]</text>
+<text x="1350" y="802" font-size="9" fill="#555">billingUnit: per-guest rows auto-calc</text>
+<text x="1350" y="815" font-size="9" fill="#555">from: guestCount × unitPrice</text>
+<text x="1350" y="840" font-size="9" fill="#888" font-style="italic">breakeven = total expenses − (gifts + parents)</text>
+
+</svg>

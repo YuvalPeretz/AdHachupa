@@ -1,0 +1,78 @@
+.card {
+  background: linear-gradient(135deg, var(--ant-color-primary) 0%, #f8d7de 60%, #fde8ec 100%);
+  border-radius: var(--ant-border-radius-lg);
+  padding: 24px 20px 20px;
+  box-shadow: var(--app-shadow-ambient);
+  // RTL: text starts on the right
+  direction: rtl;
+  text-align: right;
+  position: relative;
+  overflow: hidden;
+}
+
+.eventType {
+  margin: 0 0 4px;
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(45, 45, 45, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.eventName {
+  margin: 0 0 16px;
+  font-family: var(--app-font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ant-color-text-base);
+}
+
+.countdownRow {
+  margin-block-end: 10px;
+}
+
+.daysNumber {
+  font-family: var(--app-font-heading);
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--ant-color-text-base);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.daysLabel {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  color: rgba(45, 45, 45, 0.75);
+}
+
+.metaRow {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: rgba(45, 45, 45, 0.7);
+  margin-block-end: 20px;
+}
+
+.separator {
+  opacity: 0.4;
+}
+
+.progressSection {
+  // Ensure the antd progress bar respects RTL direction
+  direction: rtl;
+}
+
+.progressLabel {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: var(--ant-color-text-secondary);
+}
+
+.progressPercent {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ant-color-link);
+  font-variant-numeric: tabular-nums;
+}

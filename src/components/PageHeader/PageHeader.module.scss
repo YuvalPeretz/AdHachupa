@@ -1,0 +1,47 @@
+@use '../../styles/breakpoints' as bp;
+
+.header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 50;
+  background: #fff;
+  border-block-end: 1px solid rgba(45, 45, 45, 0.08);
+  height: 56px;
+  padding-inline: 12px;
+
+  @include bp.desktop-up {
+    display: none;
+  }
+}
+
+.side {
+  flex: 0 0 48px;
+}
+
+.title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--ant-font-family);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ant-color-text-base);
+  margin: 0;
+}
+
+.backButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: var(--ant-color-text-base);
+  font-size: 22px;
+  border-radius: 9999px;
+  transition: background 0.15s;
+
+  &:hover {
+    background: var(--ant-color-fill-secondary);
+  }
+}

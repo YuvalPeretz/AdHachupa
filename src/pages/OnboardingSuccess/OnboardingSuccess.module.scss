@@ -1,0 +1,88 @@
+@use '../../styles/breakpoints' as bp;
+
+.container {
+  min-height: 100dvh;
+  min-height: 100vh;
+  background-color: var(--ant-color-bg-base);
+  padding: 2.5rem 2rem calc(2.5rem + env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.innerPanel {
+  width: 100%;
+
+  @include bp.desktop-up {
+    max-width: 520px;
+    background: #fff;
+    border-radius: var(--ant-border-radius-lg);
+    box-shadow: var(--app-shadow-ambient);
+    padding: 3rem 2.5rem;
+  }
+}
+
+.checkCircle {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  background: rgba(201, 169, 122, 0.15);
+  border: 3px solid var(--ant-color-link);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-block-end: 1rem;
+  animation: scaleIn 0.4s ease-out;
+}
+
+.checkIcon {
+  color: var(--ant-color-link);
+}
+
+.sparkles {
+  margin-block-end: 1.5rem;
+}
+
+.title {
+  font-family: var(--app-font-heading) !important;
+  color: var(--ant-color-text-base) !important;
+  font-size: 2rem !important;
+  text-align: center;
+  margin-block-end: 0.75rem !important;
+}
+
+.subtitle {
+  font-family: var(--ant-font-family);
+  color: #9e9e9e;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.6;
+  display: block;
+  margin-block-end: 3rem;
+}
+
+.ctaButton {
+  background-color: var(--ant-color-link) !important;
+  border-color: var(--ant-color-link) !important;
+  color: #fff !important;
+  font-family: var(--ant-font-family);
+  font-size: 1.0625rem;
+  height: 52px;
+  border-radius: var(--ant-border-radius);
+  max-width: 340px;
+
+  &:hover,
+  &:focus {
+    background-color: #b8936a !important;
+    border-color: #b8936a !important;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

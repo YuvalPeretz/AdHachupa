@@ -1,0 +1,33 @@
+.scrollWrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  margin-bottom: var(--ant-size-xs);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pill {
+  flex-shrink: 0;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  border: 1px solid color-mix(in srgb, var(--ant-color-primary) 50%, transparent);
+  background: transparent;
+  color: var(--ant-color-text-base);
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.pillActive {
+  background: var(--ant-color-primary);
+  border-color: var(--ant-color-primary);
+  color: var(--ant-color-text-base);
+}

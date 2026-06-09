@@ -1,0 +1,68 @@
+.title {
+  font-family: var(--app-font-heading) !important;
+  color: var(--ant-color-text-base) !important;
+  font-size: 1.5rem !important;
+  margin-block-end: 0.25rem !important;
+}
+
+.subtitle {
+  font-family: var(--ant-font-family);
+  color: #9e9e9e;
+  font-size: 0.875rem;
+  display: block;
+  margin-block-end: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border: 1.5px solid rgba(45, 45, 45, 0.1);
+  border-radius: var(--ant-border-radius-lg);
+  padding: 1.25rem 1rem;
+  box-shadow: var(--app-shadow-ambient);
+}
+
+.eventLabel {
+  font-family: var(--ant-font-family);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ant-color-text-base);
+  display: block;
+  margin-block-end: 1rem;
+}
+
+.stepperRow {
+  margin-block-end: 0.75rem;
+}
+
+.stepperLabel {
+  font-family: var(--ant-font-family);
+  font-size: 0.875rem;
+  color: var(--ant-color-text-base);
+}
+
+.guestInput {
+  width: 120px;
+  direction: ltr;
+
+  :global(.ant-input-number-input) {
+    font-family: var(--ant-font-family);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.dateRow {
+  gap: 0.5rem;
+}
+
+.skipLabel {
+  font-family: var(--ant-font-family);
+  font-size: 0.8125rem;
+  color: #9e9e9e;
+}
+
+.datePicker {
+  flex: 1;
+  max-width: 160px;
+}

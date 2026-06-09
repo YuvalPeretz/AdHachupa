@@ -1,0 +1,38 @@
+:root {
+  /* Brand values with no Ant Design token equivalent — shared across SCSS modules */
+  --app-font-heading: "Rubik", sans-serif;
+  --app-shadow-ambient: 0 4px 20px rgba(45, 45, 45, 0.05);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  background-color: #fdf6ec;
+  background-image:
+    linear-gradient(rgba(253, 246, 236, 0.7), rgba(253, 246, 236, 0.7)), url("/transparent-icon-no-text.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size:
+    100% 100%,
+    100vw;
+  background-attachment: fixed;
+  font-family: var(--ant-font-family, "Rubik", sans-serif);
+  color: var(--ant-color-text-base, #2d2d2d);
+}
+
+/* On desktop the sidebar (220px) sits on the right; offset image left by half that. */
+@media (min-width: 1024px) {
+  body {
+    background-position: calc(50% - 110px) center;
+  }
+}

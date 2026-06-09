@@ -1,0 +1,79 @@
+@use '../../styles/breakpoints' as bp;
+
+.shell {
+  min-height: 100dvh;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: var(--ant-color-bg-base);
+
+  // Center the wizard as a constrained card on wide viewports
+  @include bp.desktop-up {
+    align-items: center;
+    justify-content: center;
+    padding-block: 40px;
+  }
+}
+
+.panel {
+  width: 100%;
+  height: 100%;
+
+  @include bp.desktop-up {
+    // Overrides the `flex={1}` prop (inline style) that stretches the panel
+    // to fill `.shell`'s 100vh on mobile — the desktop card sizes to content.
+    flex: none !important;
+    width: 520px;
+    height: auto;
+    max-height: calc(100vh - 80px);
+    background: #fff;
+    border-radius: var(--ant-border-radius-lg);
+    box-shadow: var(--app-shadow-ambient);
+    overflow: hidden;
+  }
+}
+
+.header {
+  padding: 1rem 1.25rem 0.5rem;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--ant-color-text-base);
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  transition: background 0.15s;
+
+  &:hover {
+    background: var(--ant-color-fill-secondary);
+  }
+}
+
+.stepLabel {
+  font-family: var(--ant-font-family);
+  font-size: 0.8125rem;
+  color: #9e9e9e;
+}
+
+.progress {
+  margin: 0 1.25rem 0;
+
+  :global(.ant-progress-inner) {
+    border-radius: 9999px;
+  }
+}
+
+.content {
+  padding: 1.5rem 1.25rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.footer {
+  padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom));
+  background: var(--ant-color-bg-base);
+  border-top: 1px solid var(--ant-color-fill-secondary);
+}

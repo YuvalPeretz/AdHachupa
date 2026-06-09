@@ -1,0 +1,66 @@
+{
+  "auth": {
+    "loading": "טוען..."
+  },
+  "nav": {
+    "home": "בית",
+    "guests": "מוזמנים",
+    "tasks": "משימות",
+    "budget": "תקציב"
+  },
+  "actions": {
+    "back": "חזרה",
+    "save": "שמור",
+    "cancel": "ביטול",
+    "next": "הבא",
+    "done": "סיום"
+  },
+  "status": {
+    "notStarted": "טרם התחיל",
+    "inProgress": "בתהליך",
+    "closed": "סגור",
+    "pending": "ממתין",
+    "cancelled": "ביטל",
+    "selected": "נבחר",
+    "considering": "בשיקול",
+    "rejected": "נדחה",
+    "confirmed": "אישר"
+  },
+  "priority": {
+    "essential": "הכרחי",
+    "logistic": "לוגיסטי",
+    "aesthetic": "אסתטי",
+    "personal": "אישי"
+  },
+  "billingUnit": {
+    "per_item": "לפי פריט",
+    "per_guest": "לפי אורח",
+    "per_hour": "לפי שעה"
+  },
+  "heroCard": {
+    "daysLeft": "ימים לחתונה",
+    "tasksLabel": "משימות הושלמו"
+  },
+  "guests": {
+    "invitedBy": "הוזמן על ידי",
+    "table": "שולחן",
+    "plusOnes": "מלווים"
+  },
+  "tasks": {
+    "dueDate": "עד",
+    "overdue": "באיחור"
+  },
+  "vendors": {
+    "priceRange": "טווח מחיר",
+    "contact": "פרטי קשר",
+    "payment": "תשלום",
+    "advance": "מקדמה",
+    "balance": "יתרה",
+    "setAsSelected": "הגדר כנבחר",
+    "edit": "ערוך"
+  },
+  "duplicateBanner": {
+    "message": "נמצאו {{count}} כפילויות אפשריות",
+    "review": "לסקירה"
+  }
+}

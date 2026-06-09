@@ -1,0 +1,93 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  direction: rtl;
+  text-align: right;
+  min-height: 100%;
+  padding-block-end: 96px;
+
+  @include bp.desktop-up {
+    padding-block-end: 40px; // no BottomNav to clear on desktop
+  }
+}
+
+.content {
+  padding: 16px;
+}
+
+/* ── Pair card ──────────────────────────────────────── */
+
+.pairCard {
+  background: #ffffff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 16px;
+  box-shadow: var(--app-shadow-ambient);
+}
+
+.pairLabel {
+  font-family: var(--ant-font-family);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ant-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-block-end: 10px;
+}
+
+.guestsRow {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: start;
+  gap: 8px;
+  margin-block-end: 12px;
+}
+
+.guestCard {
+  background: var(--ant-color-bg-base);
+  border-radius: var(--ant-border-radius);
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.guestCardName {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ant-color-text-base);
+  margin-block-end: 4px;
+}
+
+.guestCardPhone {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: rgba(45, 45, 45, 0.55);
+}
+
+.vsLabel {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: var(--ant-color-text-tertiary);
+  align-self: center;
+  text-align: center;
+}
+
+.reasonBadge {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: var(--ant-color-link);
+  margin-block-end: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ── Empty state ────────────────────────────────────── */
+
+.emptyState {
+  padding: 48px 24px;
+  text-align: center;
+  font-family: var(--ant-font-family);
+  font-size: 16px;
+  color: var(--ant-color-success);
+  font-weight: 600;
+}

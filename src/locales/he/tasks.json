@@ -1,0 +1,90 @@
+{
+  "pageTitle": "משימות",
+  "categories": {
+    "all": "כל המשימות",
+    "vendors": "ספקים",
+    "payments": "תשלומים",
+    "clothing": "ביגוד",
+    "grooming": "טיפוח",
+    "logistics": "לוגיסטיקה",
+    "other": "שונות"
+  },
+  "taskTypes": {
+    "vendor": "ספק",
+    "payment": "תשלום",
+    "decision": "החלטה",
+    "reminder": "תזכורת"
+  },
+  "status": {
+    "notStarted": "טרם התחיל",
+    "inProgress": "בתהליך",
+    "closed": "סגור"
+  },
+  "emptyState": "אין משימות בקטגוריה זו",
+  "emptyStateAll": "אין משימות עדיין",
+  "addTask": {
+    "title": "משימה חדשה",
+    "namePlaceholder": "שם המשימה",
+    "nameLabel": "שם",
+    "typeLabel": "סוג",
+    "categoryLabel": "קטגוריה",
+    "priorityLabel": "עדיפות",
+    "eventLabel": "אירוע",
+    "dueDateLabel": "תאריך יעד",
+    "responsibleLabel": "מי אחראי",
+    "notesLabel": "הערות",
+    "notesPlaceholder": "הערות נוספות...",
+    "saveButton": "הוסף משימה",
+    "cancelButton": "ביטול",
+    "nameRequired": "שם הוא שדה חובה"
+  },
+  "detail": {
+    "statusLabel": "סטטוס",
+    "priorityLabel": "עדיפות",
+    "responsibleLabel": "אחראי",
+    "notesLabel": "הערות",
+    "notesPlaceholder": "הערות...",
+    "saveButton": "שמור שינויים",
+    "vendor": {
+      "addVendor": "+ הוסף ספק",
+      "vendorsTitle": "ספקים",
+      "noVendors": "אין ספקים עדיין — הוסף אחד"
+    },
+    "payment": {
+      "totalLabel": "סכום כולל",
+      "billingUnitLabel": "סוג חיוב",
+      "advanceLabel": "מקדמה",
+      "balanceLabel": "יתרה",
+      "deadlineLabel": "תאריך לתשלום",
+      "advancePaidToggle": "מקדמה שולמה",
+      "balancePaidToggle": "יתרה שולמה",
+      "linkedVendorLabel": "ספק מקושר",
+      "paid": "שולם",
+      "unpaid": "לא שולם",
+      "overdue": "תשלום באיחור",
+      "fullyPaid": "שולם במלואו"
+    },
+    "decision": {
+      "option": "אפשרות",
+      "addOption": "+ הוסף אפשרות",
+      "prosLabel": "יתרונות",
+      "consLabel": "חסרונות",
+      "finalDecisionLabel": "החלטה סופית",
+      "finalDecisionPlaceholder": "מה בחרתם?",
+      "addProPlaceholder": "הוסף יתרון...",
+      "addConPlaceholder": "הוסף חיסרון..."
+    },
+    "reminder": {
+      "dateLabel": "תאריך",
+      "timeLabel": "שעה",
+      "notifyLabel": "שלח התראה",
+      "linkedTaskLabel": "משימה מקושרת",
+      "dependencyLabel": "תלוי ב"
+    }
+  },
+  "responsible": {
+    "partner1": "כלה",
+    "partner2": "חתן",
+    "both": "שניהם"
+  }
+}

@@ -1,0 +1,35 @@
+// Single source of truth for responsive breakpoints — aligned to
+// stitch/stitch/romantic_elegant_design_system/DESIGN.md's 3-tier grid spec.
+// NOTE: $bp-desktop must stay in sync with the matchMedia query in
+// src/hooks/useIsDesktop.ts (currently '(min-width: 1024px)').
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+$container-max: 1200px;
+$gutter-mobile: 16px;
+$gutter-desktop: 24px;
+
+@mixin tablet-up {
+  @media (min-width: $bp-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: $bp-desktop) {
+    @content;
+  }
+}
+
+// Responsive page padding: mobile keeps the existing 16px gutters and
+// bottom-nav clearance; desktop swaps to 24px gutters and a smaller
+// bottom clearance since there's no bottom nav on desktop (sidebar instead).
+@mixin page-responsive-padding {
+  padding-inline: $gutter-mobile;
+  padding-block-end: 96px;
+
+  @include desktop-up {
+    padding-inline: $gutter-desktop;
+    padding-block-end: 40px;
+  }
+}

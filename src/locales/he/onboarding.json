@@ -1,0 +1,90 @@
+{
+  "splash": {
+    "tagline": "כי כל פרט חשוב"
+  },
+  "welcome": {
+    "heading": "ברוכים הבאים! 🎉",
+    "subheading": "נעזור לכם לתכנן את היום המושלם",
+    "cta": "בואו נתחיל",
+    "loginLink": "כבר יש לכם חשבון? התחברו"
+  },
+  "eventSelection": {
+    "title": "אילו אירועים אתם מתכננים?",
+    "subtitle": "בחרו את כל האירועים הרלוונטיים",
+    "addOther": "הוסף אירוע אחר",
+    "next": "הבא",
+    "events": {
+      "wedding": "חתונה",
+      "henna": "חינה",
+      "party": "מסיבת רווקים/ות",
+      "shabbat": "שבת חתן",
+      "mikveh": "מקווה / הפרשת חלה",
+      "kabbalat_panim": "קבלת פנים"
+    }
+  },
+  "guestCount": {
+    "title": "כמה אורחים ומתי?",
+    "subtitle": "הזינו מספר אורחים ותאריך משוער לכל אירוע",
+    "guestsLabel": "אורחים",
+    "datePlaceholder": "בחר חודש ושנה",
+    "skipDate": "דלג על תאריך",
+    "next": "הבא"
+  },
+  "priorities": {
+    "title": "מה חשוב לכם?",
+    "subtitle": "דרגו 1-5 כמה כל תחום חשוב לכם",
+    "categories": {
+      "venue": "אולם ותפעול",
+      "vendors": "ספקים",
+      "clothing": "ביגוד",
+      "grooming": "טיפוח",
+      "photography": "צילום ווידאו",
+      "music": "מוזיקה",
+      "catering": "קייטרינג ואוכל",
+      "decor": "עיצוב ופרחים"
+    },
+    "next": "הבא"
+  },
+  "budgetRange": {
+    "title": "מה התקציב הכולל שלכם?",
+    "subtitle": "הכניסו סכום — ניתן לשנות בכל עת",
+    "inputPlaceholder": "לדוגמה: 80,000",
+    "helperText": "ניתן לשנות בכל עת מהגדרות התקציב",
+    "next": "הבא"
+  },
+  "coupleInfo": {
+    "title": "ספרו לנו עליכם",
+    "subtitle": "הפרטים עוזרים לנו להתאים אישית",
+    "name1Placeholder": "שם בן/בת הזוג הראשון/ה",
+    "name2Placeholder": "שם בן/בת הזוג השני/ה",
+    "genderLabel": "מגדר",
+    "genders": {
+      "male": "זכר",
+      "female": "נקבה",
+      "other": "אחר"
+    },
+    "regionLabel": "אזור מגורים",
+    "regionPlaceholder": "בחרו אזור",
+    "regions": {
+      "tel_aviv": "תל אביב והמרכז",
+      "jerusalem": "ירושלים",
+      "haifa": "חיפה והצפון",
+      "beer_sheva": "באר שבע והדרום",
+      "sharon": "השרון",
+      "shfela": "השפלה",
+      "galil": "הגליל",
+      "negev": "הנגב",
+      "other": "אחר"
+    },
+    "kosherLabel": "אירוע כשר",
+    "submit": "סיום ✓"
+  },
+  "success": {
+    "title": "הכל מוכן! 🎉",
+    "subtitle": "הרשימה האישית שלכם מוכנה. בואו נתחיל לתכנן!",
+    "cta": "קדימה לדשבורד"
+  },
+  "progress": {
+    "step": "שלב {{current}} מתוך {{total}}"
+  }
+}

@@ -1,0 +1,85 @@
+@use '../../styles/breakpoints' as bp;
+
+.container {
+  min-height: 100dvh;
+  min-height: 100vh;
+  background-color: var(--ant-color-bg-base);
+  padding: 2rem 1.5rem calc(2rem + env(safe-area-inset-bottom));
+
+  // Desktop: center the whole flow as a constrained card, floating over the
+  // ivory background. Absolute + transform centers it in the viewport without
+  // touching the internal space-between layout (illustration ↔ CTA spread).
+  @include bp.desktop-up {
+    // Physical left/top + translate(-50%, -50%): geometric viewport centering
+    // is direction-agnostic, so logical insets (which would flip the translate
+    // sign under RTL) are intentionally not used here.
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 520px;
+    min-height: 640px;
+    background: #fff;
+    border-radius: var(--ant-border-radius-lg);
+    box-shadow: var(--app-shadow-ambient);
+    padding: 3rem 2.5rem;
+  }
+}
+
+.illustration {
+  margin-block-end: 1.5rem;
+}
+
+.illustrationIcon {
+  display: block;
+  border-radius: 28px;
+  object-fit: contain;
+}
+
+.heading {
+  font-family: var(--app-font-heading) !important;
+  color: var(--ant-color-text-base) !important;
+  font-size: 2rem !important;
+  text-align: center;
+  margin-block-end: 0.5rem !important;
+}
+
+.subheading {
+  font-family: var(--ant-font-family);
+  color: #9e9e9e;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.ctaSection {
+  width: 100%;
+  padding-block-start: 2rem;
+}
+
+.ctaButton {
+  background-color: var(--ant-color-link) !important;
+  border-color: var(--ant-color-link) !important;
+  color: #fff !important;
+  font-family: var(--ant-font-family);
+  font-size: 1.0625rem;
+  height: 52px;
+  border-radius: var(--ant-border-radius);
+
+  &:hover,
+  &:focus {
+    background-color: #b8936a !important;
+    border-color: #b8936a !important;
+  }
+}
+
+.loginLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--ant-font-family);
+  font-size: 0.875rem;
+  color: var(--ant-color-link);
+  text-align: center;
+  text-decoration: underline;
+  padding: 0.25rem;
+}

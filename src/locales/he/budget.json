@@ -1,0 +1,54 @@
+{
+  "pageTitle": "תקציב",
+  "contextChips": {
+    "confirmedGuests": "{{count}} מוזמנים אישרו",
+    "daysLeft": "{{days}} ימים לאירוע"
+  },
+  "donut": {
+    "percentSpent": "{{percent}}%",
+    "ofBudget": "מהתקציב",
+    "editBudget": "ערוך תקציב כולל"
+  },
+  "giftsCard": {
+    "title": "מתנות ואיזון",
+    "giftIncome": "הכנסות מתנות",
+    "breakeven": "פער לאיזון",
+    "surplus": "עודף",
+    "deficit": "חסר",
+    "rsvpSurplus": "עודף אם כולם יגיעו",
+    "rsvpDeficit": "חסר אם כולם יגיעו"
+  },
+  "categories": {
+    "title": "פירוט קטגוריות",
+    "spent": "₪{{spent}}",
+    "of": "מתוך",
+    "budget": "₪{{budget}}"
+  },
+  "editBudgetModal": {
+    "cancel": "ביטול",
+    "save": "שמור"
+  },
+  "addExpense": {
+    "title": "הוסף הוצאה",
+    "nameLabel": "שם פריט",
+    "namePlaceholder": "שם ההוצאה...",
+    "categoryLabel": "קטגוריה",
+    "estimatedCostLabel": "עלות מוערכת",
+    "actualCostLabel": "עלות בפועל",
+    "billingUnitLabel": "סוג חיוב",
+    "perGuestHint": "₪{{unit}} × {{count}} אורחים = ₪{{total}}",
+    "perHourHint": "₪{{unit}} × {{hours}} שעות = ₪{{total}}",
+    "priorityLabel": "חובה / רשות",
+    "priorityRequired": "חובה",
+    "priorityOptional": "רשות",
+    "eventLabel": "אירוע",
+    "vendorLabel": "ספק מקושר",
+    "vendorPlaceholder": "בחר ספק...",
+    "responsibleLabel": "מי אחראי",
+    "notesLabel": "הערות",
+    "notesPlaceholder": "הערות נוספות...",
+    "saveButton": "הוסף הוצאה",
+    "cancelButton": "ביטול",
+    "nameRequired": "שם הוא שדה חובה"
+  }
+}

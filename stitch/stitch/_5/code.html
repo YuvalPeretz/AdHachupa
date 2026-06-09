@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html class="light" dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>הכל מוכן! - Onboarding Success</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Playfair Display & Rubik -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#6d552d",
+                        "surface-tint": "#78555d",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-low": "#f6f3f2",
+                        "outline-variant": "#d3c3c5",
+                        "secondary": "#4b6546",
+                        "inverse-primary": "#e8bbc5",
+                        "surface-container-high": "#eae7e7",
+                        "primary": "#78555d",
+                        "primary-fixed-dim": "#e8bbc5",
+                        "on-surface-variant": "#4f4446",
+                        "tertiary-fixed-dim": "#e3c191",
+                        "tertiary-fixed": "#ffdeae",
+                        "background": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "inverse-surface": "#303030",
+                        "on-tertiary-fixed-variant": "#5a431d",
+                        "surface": "#fcf9f8",
+                        "on-primary-fixed": "#2d131b",
+                        "inverse-on-surface": "#f3f0f0",
+                        "on-secondary-container": "#516b4c",
+                        "primary-container": "#f2c4ce",
+                        "secondary-fixed": "#cdebc4",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#724f58",
+                        "secondary-fixed-dim": "#b1cfa9",
+                        "secondary-container": "#cdebc4",
+                        "on-surface": "#1b1c1c",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#5e3e46",
+                        "on-secondary-fixed": "#092008",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#f0eded",
+                        "tertiary": "#745a32",
+                        "on-tertiary-fixed": "#281800",
+                        "tertiary-container": "#edcb99",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e4e2e1",
+                        "outline": "#817476",
+                        "on-background": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e1",
+                        "on-secondary-fixed-variant": "#344d30",
+                        "primary-fixed": "#ffd9e1",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "80px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "container-max": "1200px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "safe": "env(safe-area-inset-bottom)"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Rubik"],
+                        "body-md": ["Rubik"],
+                        "label-sm": ["Rubik"],
+                        "label-md": ["Rubik"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Rubik"],
+                        "headline-md": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom, 24px); }
+        .pt-safe { padding-top: env(safe-area-inset-top, 24px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Decorative Watercolor Background -->
+<div class="absolute inset-0 z-0 pointer-events-none opacity-60 mix-blend-multiply" data-alt="A delicate watercolor illustration of soft, elegant confetti and celebratory abstract shapes falling gracefully. The color palette features champagne gold, blush rose, and warm ivory tones, perfectly matching a high-end, romantic wedding planning aesthetic. The background is a clean, bright warm ivory, creating a calm and luxurious light-mode UI feel. High resolution, minimalist and sophisticated." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkvCWSY9zqg5uQ68ltnLHOeUn2mlSqf0m1GTvTPwRp-AmJrnP5PO_O1wA8I4KVAR4gEdoZUES_rxJRdNF91yUHCvkis_JYlblNH7OP6cMhTsHpzEK4Vq1Ocxqd6hHS9BBXzvRz2miZZw7vB5ZLiyXpDGLQE699EkeV3yIQsqL2joGdXRuer2NXZim8VWtUZ7_eStQv_wp807AKSXDp2uBlmzdksB31Bs811iA6EjuQr4FHg8qPI52DDzq-sckIwDT8SMwI4efVng'); background-size: cover; background-position: center;">
+</div>
+<!-- Main Content Container -->
+<main class="z-10 flex flex-col items-center justify-center w-full max-w-md px-gutter text-center flex-1 pt-safe pb-safe">
+<!-- Champagne Gold Circle with Checkmark -->
+<div class="w-32 h-32 rounded-full bg-tertiary-container flex items-center justify-center shadow-lg mb-lg transform transition-transform duration-700 hover:scale-105">
+<span class="material-symbols-outlined text-[64px] text-on-tertiary-container" data-icon="check" style="font-variation-settings: 'FILL' 1;">
+                check
+            </span>
+</div>
+<!-- Typography -->
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-sm">
+            הכל מוכן! 🎉
+        </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[280px]">
+            בנינו לכם רשימת משימות מותאמת אישית
+        </p>
+</main>
+<!-- Bottom Action Button -->
+<div class="z-10 w-full max-w-md px-gutter pb-lg">
+<button class="w-full bg-tertiary-container text-on-tertiary-container font-label-md text-label-md py-4 rounded-xl shadow-sm transition-all duration-300 hover:bg-tertiary hover:text-on-tertiary hover:shadow-md active:scale-[0.98] flex items-center justify-center gap-2">
+            קדימה לדשבורד
+            <span class="material-symbols-outlined text-xl rtl:-scale-x-100" data-icon="arrow_forward">
+                arrow_forward
+            </span>
+</button>
+</div>
+</body></html>

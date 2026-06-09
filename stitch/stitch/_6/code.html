@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="he"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding - Priorities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Rubik:ital,wght@0,300..900;1,300..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-container": "#6d552d",
+                      "surface-tint": "#78555d",
+                      "surface-dim": "#dcd9d9",
+                      "surface-container-low": "#f6f3f2",
+                      "outline-variant": "#d3c3c5",
+                      "secondary": "#4b6546",
+                      "inverse-primary": "#e8bbc5",
+                      "surface-container-high": "#eae7e7",
+                      "primary": "#78555d",
+                      "primary-fixed-dim": "#e8bbc5",
+                      "on-surface-variant": "#4f4446",
+                      "tertiary-fixed-dim": "#e3c191",
+                      "tertiary-fixed": "#ffdeae",
+                      "background": "#fcf9f8",
+                      "surface-bright": "#fcf9f8",
+                      "inverse-surface": "#303030",
+                      "on-tertiary-fixed-variant": "#5a431d",
+                      "surface": "#fcf9f8",
+                      "on-primary-fixed": "#2d131b",
+                      "inverse-on-surface": "#f3f0f0",
+                      "on-secondary-container": "#516b4c",
+                      "primary-container": "#f2c4ce",
+                      "secondary-fixed": "#cdebc4",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#724f58",
+                      "secondary-fixed-dim": "#b1cfa9",
+                      "secondary-container": "#cdebc4",
+                      "on-surface": "#1b1c1c",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#5e3e46",
+                      "on-secondary-fixed": "#092008",
+                      "on-primary": "#ffffff",
+                      "surface-container": "#f0eded",
+                      "tertiary": "#745a32",
+                      "on-tertiary-fixed": "#281800",
+                      "tertiary-container": "#edcb99",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e4e2e1",
+                      "outline": "#817476",
+                      "on-background": "#1b1c1c",
+                      "surface-container-highest": "#e4e2e1",
+                      "on-secondary-fixed-variant": "#344d30",
+                      "primary-fixed": "#ffd9e1",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "80px",
+                      "sm": "12px",
+                      "lg": "48px",
+                      "xs": "4px",
+                      "container-max": "1200px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "display-lg-mobile": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg": [
+                              "Playfair Display"
+                      ],
+                      "headline-lg-mobile": [
+                              "Rubik"
+                      ],
+                      "body-md": [
+                              "Rubik"
+                      ],
+                      "label-sm": [
+                              "Rubik"
+                      ],
+                      "label-md": [
+                              "Rubik"
+                      ],
+                      "display-lg": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Rubik"
+                      ],
+                      "headline-md": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg-mobile": [
+                              "36px",
+                              {
+                                      "lineHeight": "44px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .star-rating .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0;
+            color: theme('colors.outline-variant');
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .star-rating .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+            color: theme('colors.tertiary-container');
+        }
+        .star-rating .material-symbols-outlined:hover {
+            transform: scale(1.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen flex flex-col justify-between p-gutter relative overflow-hidden bg-background">
+<!-- Decorative ambient gradient -->
+<div class="absolute top-[-20%] right-[-10%] w-[150%] h-[150%] rounded-full bg-gradient-to-br from-primary-container/20 via-transparent to-transparent pointer-events-none blur-3xl"></div>
+<div class="flex-grow flex flex-col max-w-[600px] mx-auto w-full z-10">
+<!-- Progress Indicator -->
+<div class="w-full flex items-center justify-between mt-8 mb-12">
+<button aria-label="חזור" class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined rtl:rotate-180">arrow_back</span>
+</button>
+<div class="flex gap-2" dir="ltr">
+<div class="h-2 w-8 rounded-full bg-primary-container/30"></div>
+<div class="h-2 w-8 rounded-full bg-primary-container/30"></div>
+<div class="h-2 w-8 rounded-full bg-primary"></div>
+<div class="h-2 w-8 rounded-full bg-surface-variant"></div>
+<div class="h-2 w-8 rounded-full bg-surface-variant"></div>
+<div class="h-2 w-8 rounded-full bg-surface-variant"></div>
+</div>
+<div class="w-10 h-10"></div> <!-- Spacer for alignment -->
+</div>
+<!-- Header -->
+<div class="text-center mb-12">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-2 md:font-headline-lg md:text-headline-lg">מה הכי חשוב לכם?</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">דרגו לפי חשיבות (1–5)</p>
+</div>
+<!-- Priority List -->
+<div class="space-y-4 mb-8">
+<!-- Row 1: Music -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_4px_20px_rgba(45,45,45,0.05)] border border-surface-container-high flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3 self-start sm:self-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">music_note</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">מוזיקה / דיג'יי</span>
+</div>
+<div class="star-rating flex flex-row-reverse gap-1" data-category="music">
+<span class="material-symbols-outlined text-[28px]" data-value="5">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="4">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="3">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="2">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="1">star</span>
+</div>
+</div>
+<!-- Row 2: Photo/Video -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_4px_20px_rgba(45,45,45,0.05)] border border-surface-container-high flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3 self-start sm:self-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">צילום ווידאו</span>
+</div>
+<div class="star-rating flex flex-row-reverse gap-1" data-category="photo">
+<span class="material-symbols-outlined text-[28px]" data-value="5">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="4">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="3">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="2">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="1">star</span>
+</div>
+</div>
+<!-- Row 3: Catering -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_4px_20px_rgba(45,45,45,0.05)] border border-surface-container-high flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3 self-start sm:self-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">קייטרינג ואוכל</span>
+</div>
+<div class="star-rating flex flex-row-reverse gap-1" data-category="catering">
+<span class="material-symbols-outlined text-[28px]" data-value="5">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="4">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="3">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="2">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="1">star</span>
+</div>
+</div>
+<!-- Row 4: Venue -->
+<div class="bg-surface rounded-xl p-4 shadow-[0_4px_20px_rgba(45,45,45,0.05)] border border-surface-container-high flex flex-col sm:flex-row justify-between items-center gap-4">
+<div class="flex items-center gap-3 self-start sm:self-center">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="font-body-lg text-body-lg text-on-surface">מקום האירוע</span>
+</div>
+<div class="star-rating flex flex-row-reverse gap-1" data-category="venue">
+<span class="material-symbols-outlined text-[28px]" data-value="5">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="4">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="3">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="2">star</span>
+<span class="material-symbols-outlined text-[28px]" data-value="1">star</span>
+</div>
+</div>
+</div>
+<p class="text-center font-label-md text-label-md text-outline mb-auto">תוכלו לדרג את כל הפריטים לאחר ההרשמה</p>
+</div>
+<!-- Bottom Action -->
+<div class="mt-8 pb-8 w-full max-w-[600px] mx-auto z-10">
+<button class="w-full bg-primary-container text-on-primary-container font-body-lg text-body-lg font-medium py-4 rounded-xl hover:bg-primary-fixed transition-colors active:scale-[0.98] shadow-sm">
+            הבא
+        </button>
+</div>
+<script>
+        document.querySelectorAll('.star-rating').forEach(ratingContainer => {
+            const stars = ratingContainer.querySelectorAll('.material-symbols-outlined');
+            
+            stars.forEach(star => {
+                star.addEventListener('click', () => {
+                    const value = parseInt(star.getAttribute('data-value'));
+                    
+                    // Reset all stars in this container
+                    stars.forEach(s => {
+                        s.classList.remove('filled');
+                        // Reset fill font variation
+                        s.style.fontVariationSettings = "'FILL' 0";
+                    });
+                    
+                    // Fill clicked star and all previous siblings (which are lower values due to flex-row-reverse)
+                    // Actually, because of flex-row-reverse, the visual left is DOM right.
+                    // We just need to fill all stars with data-value <= clicked value
+                    stars.forEach(s => {
+                        if (parseInt(s.getAttribute('data-value')) <= value) {
+                            s.classList.add('filled');
+                            s.style.fontVariationSettings = "'FILL' 1";
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body></html>

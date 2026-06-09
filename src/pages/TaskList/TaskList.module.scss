@@ -1,0 +1,94 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  min-height: 100%;
+  // Horizontal padding is owned by child sections (.eventPillWrapper,
+  // .sections, etc.) — .page only controls vertical clearance.
+  padding-block: 16px 80px;
+
+  @include bp.desktop-up {
+    padding-block-end: 40px;
+  }
+}
+
+.eventPillWrapper {
+  padding: 0 var(--ant-size) 0 var(--ant-size);
+}
+
+.categoryScroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px 16px;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.categoryChips {
+  width: max-content;
+}
+
+.chip {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1.5px solid #e0d5c8;
+  background: #fff;
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: var(--ant-color-text-base);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
+
+  &:focus-visible {
+    outline: 2px solid var(--ant-color-link);
+    outline-offset: 2px;
+  }
+}
+
+.chipActive {
+  background: var(--ant-color-primary);
+  border-color: var(--ant-color-primary);
+  color: var(--ant-color-text-base);
+  font-weight: 600;
+}
+
+.sections {
+  padding: 0 16px;
+}
+
+.sectionHeader {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-align: right;
+  padding: 16px 0 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.emptyState {
+  padding: 60px 24px;
+  text-align: center;
+
+  p {
+    font-family: var(--ant-font-family);
+    font-size: 15px;
+    color: #9e9e9e;
+    margin: 0;
+  }
+}
+
+.skeletonSection {
+  padding: 12px 16px 0;
+}
+
+.skeletonCard {
+  padding: 4px 16px;
+}

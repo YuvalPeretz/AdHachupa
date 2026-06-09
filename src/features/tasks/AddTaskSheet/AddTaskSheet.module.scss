@@ -1,0 +1,94 @@
+.form {
+  padding-bottom: 24px;
+}
+
+.fieldLabel {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-align: right;
+  margin-bottom: 6px;
+}
+
+.typeSegment {
+  width: 100%;
+}
+
+.chip {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1.5px solid #e0d5c8;
+  background: #fff;
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: var(--ant-color-text-base);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:focus-visible {
+    outline: 2px solid var(--ant-color-link);
+    outline-offset: 2px;
+  }
+}
+
+.chipActive {
+  font-weight: 600;
+}
+
+// Priority-specific active states
+.chipEssential.chipActive {
+  background: rgba(242, 196, 206, 0.25);
+  border-color: var(--ant-color-primary);
+}
+
+.chipLogistic.chipActive {
+  background: rgba(168, 197, 160, 0.25);
+  border-color: var(--ant-color-success);
+}
+
+.chipAesthetic.chipActive {
+  background: rgba(209, 196, 233, 0.25);
+  border-color: #d1c4e9;
+}
+
+.chipPersonal.chipActive {
+  background: rgba(255, 204, 188, 0.25);
+  border-color: #ffccbc;
+}
+
+.avatarChip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: var(--ant-border-radius);
+  border: 1.5px solid #e0d5c8;
+  background: #fff;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &.avatarChipActive {
+    background: rgba(201, 169, 122, 0.15);
+    border-color: var(--ant-color-link);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ant-color-link);
+    outline-offset: 2px;
+  }
+
+  span {
+    font-family: var(--ant-font-family);
+    font-size: 11px;
+    color: #6b6b6b;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  margin-top: 4px;
+}

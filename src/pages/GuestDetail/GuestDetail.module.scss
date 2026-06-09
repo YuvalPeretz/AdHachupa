@@ -1,0 +1,162 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  direction: rtl;
+  text-align: right;
+  min-height: 100%;
+  padding-block-end: 96px;
+
+  @include bp.desktop-up {
+    padding-block-end: 40px; // no BottomNav to clear on desktop
+  }
+}
+
+/* ── Avatar header ─────────────────────────────────── */
+
+.avatarSection {
+  padding: 24px 20px 16px;
+}
+
+.guestName {
+  font-family: var(--app-font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--ant-color-text-base);
+  text-align: center;
+}
+
+/* ── Cards ─────────────────────────────────────────── */
+
+.cardsArea {
+  padding: 0 16px;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 16px;
+  box-shadow: var(--app-shadow-ambient);
+}
+
+.cardTitle {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ant-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-block-end: 12px;
+}
+
+/* ── Contact card ──────────────────────────────────── */
+
+.contactRow {
+  margin-block-end: 8px;
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  color: var(--ant-color-text-base);
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+.contactLabel {
+  color: rgba(45, 45, 45, 0.55);
+  font-size: 13px;
+  min-width: 48px;
+}
+
+/* ── RSVP chips ─────────────────────────────────────── */
+
+.rsvpChip {
+  padding: 8px 20px;
+  border-radius: 9999px;
+  border: 1.5px solid;
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  background: transparent;
+
+  &.confirmed {
+    border-color: var(--ant-color-success);
+    color: var(--ant-color-success);
+
+    &.active {
+      background: var(--ant-color-success);
+      color: #ffffff;
+    }
+  }
+
+  &.pending {
+    border-color: var(--ant-color-warning);
+    color: var(--ant-color-warning);
+
+    &.active {
+      background: var(--ant-color-warning);
+      color: var(--ant-color-text-base);
+    }
+  }
+
+  &.cancelled {
+    border-color: var(--ant-color-error);
+    color: var(--ant-color-error);
+
+    &.active {
+      background: var(--ant-color-error);
+      color: #ffffff;
+    }
+  }
+}
+
+/* ── Plus-ones stepper ──────────────────────────────── */
+
+.stepperRow {
+  margin-block-start: 12px;
+}
+
+.stepperValue {
+  font-family: var(--ant-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ant-color-text-base);
+  min-width: 28px;
+  text-align: center;
+}
+
+.fieldLabel {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: rgba(45, 45, 45, 0.55);
+  margin-block-end: 6px;
+}
+
+/* ── Events chips ───────────────────────────────────── */
+
+.eventChip {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: rgba(201, 169, 122, 0.12);
+  color: var(--ant-color-link);
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ── Delete section ─────────────────────────────────── */
+
+.deleteCard {
+  background: #ffffff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 16px;
+  border: 1.5px solid var(--ant-color-error);
+  box-shadow: var(--app-shadow-ambient);
+}
+
+/* ── Save actions ───────────────────────────────────── */
+
+.actionsRow {
+  padding: 16px;
+}

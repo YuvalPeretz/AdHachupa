@@ -1,0 +1,53 @@
+{
+  "title": "הגדרות",
+  "sections": {
+    "couple": "פרטי הזוג",
+    "account": "חשבון",
+    "danger": "אזור מסוכן"
+  },
+  "couple": {
+    "names": "שמות",
+    "region": "אזור מגורים",
+    "kosher": "אירוע כשר",
+    "kosherYes": "כן",
+    "kosherNo": "לא"
+  },
+  "account": {
+    "signOut": "התנתקות"
+  },
+  "danger": {
+    "intro": "בחרו מה למחוק. כל פעולה בלתי הפיכה.",
+    "categories": {
+      "guests": {
+        "label": "אורחים",
+        "description": "רשימת המוזמנים, אישורי הגעה, כפילויות ומתנות"
+      },
+      "tasks": {
+        "label": "משימות וספקים",
+        "description": "כל המשימות, תשלומים, החלטות, תזכורות וספקים"
+      },
+      "budget": {
+        "label": "תקציב",
+        "description": "סיכום התקציב הכולל וכל ההוצאות"
+      },
+      "couple": {
+        "label": "פרטי זוג ואירועים",
+        "description": "שמות, תאריכים, אזור וקישורי שיתוף עם הורים"
+      }
+    },
+    "deleteAccount": {
+      "label": "מחיקת חשבון גוגל",
+      "description": "מוחק את חשבון הגוגל עצמו — ניתן להירשם מחדש עם אותו חשבון בעתיד"
+    },
+    "deleteButton": "מחק את הנבחר",
+    "nothingSelected": "יש לבחור לפחות אחד",
+    "confirmTitle": "אישור מחיקה",
+    "confirmWillDelete": "הפעולה תמחק:",
+    "confirmDescription": "כתבו «מחק» לאישור:",
+    "confirmPlaceholder": "מחק",
+    "confirmWord": "מחק",
+    "confirmButton": "מחק לצמיתות",
+    "cancel": "ביטול",
+    "deleting": "מוחק..."
+  }
+}

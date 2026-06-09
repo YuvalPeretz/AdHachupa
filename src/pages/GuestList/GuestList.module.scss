@@ -1,0 +1,85 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  padding-block-start: 16px;
+  direction: rtl;
+  text-align: right;
+  min-height: 100%;
+  @include bp.page-responsive-padding;
+}
+
+/* ── Stats grid ─────────────────────────────────────────── */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-block-end: 16px;
+}
+
+.statCard {
+  background: #ffffff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 14px 16px;
+  box-shadow: var(--app-shadow-ambient);
+  text-align: center;
+}
+
+.statValue {
+  font-family: var(--app-font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ant-color-link);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.statLabel {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: rgba(45, 45, 45, 0.55);
+  margin-block-start: 2px;
+}
+
+/* ── Section headers ────────────────────────────────────── */
+
+.sectionHeader {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(45, 45, 45, 0.55);
+  padding-block: 12px 6px;
+  text-align: right;
+  direction: rtl;
+}
+
+/* ── Guest list ─────────────────────────────────────────── */
+
+.guestList {
+  margin-block-end: 16px;
+}
+
+/* ── FAB position override ──────────────────────────────── */
+/* antd FloatButton default is bottom-right; we override to bottom-left (RTL logical inline-start) */
+.fabContainer {
+  position: fixed;
+  inset-block-end: 80px; /* above BottomNav */
+  inset-inline-start: 20px;
+  z-index: 100;
+
+  @include bp.desktop-up {
+    inset-block-end: 20px; /* no BottomNav to clear on desktop */
+  }
+}
+
+/* ── Skeleton ───────────────────────────────────────────── */
+
+.skeletonSection {
+  margin-block-end: 12px;
+}
+
+.skeletonCard {
+  background: #fff;
+  border-radius: var(--ant-border-radius-lg);
+  margin-block-end: 6px;
+}

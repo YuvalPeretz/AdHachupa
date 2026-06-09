@@ -1,0 +1,35 @@
+{
+  "greeting": "שלום, {{names}}",
+  "daysUntil": "{{days}} ימים ל{{eventType}}",
+  "sections": {
+    "tasks": "משימות קרובות",
+    "budget": "סיכום תקציב",
+    "vendors": "ספקים נבחרים",
+    "otherEvents": "אירועים נוספים",
+    "settings": "הגדרות"
+  },
+  "settings": {
+    "label": "הגדרות חשבון"
+  },
+  "budget": {
+    "spent": "הוצאה עד כה",
+    "total": "תקציב כולל",
+    "giftIncome": "הכנסות מתנות",
+    "breakeven": "פער עד איזון",
+    "breakevenPositive": "עודף",
+    "breakevenNegative": "חסר",
+    "currency": "₪{{amount}}"
+  },
+  "vendors": {
+    "empty": "עדיין אין ספקים נבחרים"
+  },
+  "otherEvents": {
+    "daysLeft": "{{days}} ימים",
+    "empty": "אין אירועים נוספים"
+  },
+  "tasks": {
+    "progress": "{{completed}} מתוך {{total}} משימות",
+    "empty": "אין משימות פתוחות כרגע",
+    "seeAll": "לכל המשימות ←"
+  }
+}

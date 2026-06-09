@@ -1,0 +1,74 @@
+.drawer {
+  // Rounded top corners
+  :global(.ant-drawer-content) {
+    border-radius: var(--ant-border-radius-lg) var(--ant-border-radius-lg) 0 0;
+    overflow: hidden;
+  }
+}
+
+.header {
+  // Move the title below the handle bar; use RTL-safe text alignment
+  padding-block-start: 8px;
+  padding-block-end: 12px;
+  border-block-end: 1px solid rgba(45, 45, 45, 0.08);
+  text-align: center;
+
+  :global(.ant-drawer-title) {
+    font-family: var(--ant-font-family);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ant-color-text-base);
+    text-align: center;
+  }
+}
+
+.body {
+  padding-block-start: 0;
+  padding-inline: 20px;
+  overflow-y: auto;
+}
+
+// Handle bar sits at the very top of the drawer content, above the header
+.handle {
+  position: absolute;
+  inset-block-start: 8px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(45, 45, 45, 0.2);
+  // Ensure it renders above the drawer body scroll area
+  z-index: 1;
+}
+
+// ─── Desktop variant: centered Modal instead of bottom Drawer ──────────────
+
+.modal {
+  :global(.ant-modal-content) {
+    border-radius: var(--ant-border-radius-lg);
+    overflow: hidden;
+    background: var(--ant-color-bg-base);
+    padding: 0;
+  }
+}
+
+.modalHeader {
+  padding: 20px 24px 16px;
+  border-block-end: 1px solid rgba(45, 45, 45, 0.08);
+  background: var(--ant-color-bg-base);
+
+  :global(.ant-modal-title) {
+    font-family: var(--ant-font-family);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ant-color-text-base);
+    text-align: center;
+  }
+}
+
+.modalBody {
+  padding: 20px 24px;
+  max-height: 70vh;
+  overflow-y: auto;
+}

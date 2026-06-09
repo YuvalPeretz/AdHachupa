@@ -1,0 +1,256 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  min-height: 100%;
+  padding-bottom: 32px;
+}
+
+.desktopTitle {
+  display: none;
+
+  @include bp.desktop-up {
+    display: block;
+    font-family: var(--app-font-heading);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--ant-color-text-base);
+    text-align: right;
+    padding-block-end: 4px;
+  }
+}
+
+.content {
+  // Preserve the existing mobile padding exactly; widen the horizontal
+  // gutter to match the desktop spec (24px) on wide viewports.
+  padding: 16px 20px;
+
+  @include bp.desktop-up {
+    padding-inline: bp.$gutter-desktop;
+  }
+}
+
+.section {
+  background: #fff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 16px;
+  box-shadow: var(--app-shadow-ambient);
+}
+
+.sectionTitle {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-align: right;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fieldLabel {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: #6b6b6b;
+  text-align: right;
+  margin-bottom: 6px;
+}
+
+.statusChip {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1.5px solid #e0d5c8;
+  background: #fff;
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: var(--ant-color-text-base);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:focus-visible {
+    outline: 2px solid var(--ant-color-link);
+    outline-offset: 2px;
+  }
+}
+
+.statusChipActive {
+  font-weight: 600;
+}
+
+.infoRow {
+  padding: 6px 0;
+  border-bottom: 1px solid #f5efe7;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.infoLabel {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+.infoValue {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  color: var(--ant-color-text-base);
+  font-weight: 500;
+}
+
+.infoValueRed {
+  color: var(--ant-color-error);
+}
+
+.infoValueGreen {
+  color: var(--ant-color-success);
+}
+
+.saveBtn {
+  width: 100%;
+  height: 48px;
+  border-radius: var(--ant-border-radius);
+  font-family: var(--ant-font-family);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+// Dashed add card
+.dashedCard {
+  border: 2px dashed var(--ant-color-link);
+  border-radius: var(--ant-border-radius-lg);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #fff;
+  color: var(--ant-color-link);
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(201, 169, 122, 0.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--ant-color-link);
+    outline-offset: 2px;
+  }
+}
+
+// Payment rows
+.paymentRow {
+  padding: 12px 0;
+  border-bottom: 1px solid #f5efe7;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.paymentLabel {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  color: var(--ant-color-text-base);
+  text-align: right;
+}
+
+.paymentAmount {
+  font-family: var(--app-font-heading);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ant-color-text-base);
+}
+
+.paymentAmountRed {
+  color: var(--ant-color-error);
+}
+
+.paymentAmountGreen {
+  color: var(--ant-color-success);
+}
+
+.paymentStatusIcon {
+  font-size: 18px;
+  margin-inline-start: 6px;
+}
+
+.decisionCard {
+  flex: 1;
+  background: #fff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 14px;
+  box-shadow: var(--app-shadow-ambient);
+}
+
+.decisionCardTitle {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ant-color-text-base);
+  text-align: right;
+}
+
+.proConsHeader {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b6b6b;
+  text-align: right;
+}
+
+.proItem {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: var(--ant-color-success);
+  text-align: right;
+
+  &::before {
+    content: '✓ ';
+  }
+}
+
+.conItem {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: var(--ant-color-error);
+  text-align: right;
+
+  &::before {
+    content: '✗ ';
+  }
+}
+
+.finalDecisionInput {
+  border-radius: var(--ant-border-radius);
+
+  &.filled {
+    border-color: var(--ant-color-link) !important;
+    box-shadow: 0 0 0 2px rgba(201, 169, 122, 0.2) !important;
+  }
+}
+
+// Reminder
+.reminderToggleOn {
+  // Target the antd Switch inner handle
+  :global(.ant-switch-checked) {
+    background-color: var(--ant-color-link) !important;
+  }
+}
+
+.linkedChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(201, 169, 122, 0.12);
+  border: 1.5px solid var(--ant-color-link);
+  color: var(--ant-color-link);
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+}

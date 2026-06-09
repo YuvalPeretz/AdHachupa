@@ -1,0 +1,137 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  direction: rtl;
+  text-align: right;
+  background: var(--ant-color-bg-base);
+  min-height: 100vh;
+  padding-block: 24px 40px;
+  padding-inline: bp.$gutter-mobile;
+
+  // Standalone page (no AppShell/sidebar) — center its own content column.
+  @include bp.desktop-up {
+    max-width: bp.$container-max;
+    margin-inline: auto;
+    padding-inline: bp.$gutter-desktop;
+  }
+}
+
+/* ── Header ─────────────────────────────────────────── */
+
+.header {
+  text-align: center;
+  margin-block-end: 28px;
+}
+
+.title {
+  font-family: var(--app-font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ant-color-text-base);
+  margin-block-end: 6px;
+}
+
+.subtitle {
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  color: var(--ant-color-text-secondary);
+}
+
+/* ── Add guest form ─────────────────────────────────── */
+
+.formCard {
+  background: #ffffff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 20px 16px;
+  box-shadow: var(--app-shadow-ambient);
+  margin-block-end: 20px;
+}
+
+.formTitle {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ant-color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-block-end: 14px;
+}
+
+.fieldLabel {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: var(--ant-color-text-secondary);
+  margin-block-end: 4px;
+}
+
+.stepperValue {
+  font-family: var(--ant-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ant-color-text-base);
+  min-width: 24px;
+  text-align: center;
+}
+
+.addButton {
+  margin-block-start: 6px;
+}
+
+/* ── Session list ───────────────────────────────────── */
+
+.sessionList {
+  margin-block-end: 24px;
+}
+
+.sessionTitle {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ant-color-text-secondary);
+  margin-block-end: 10px;
+}
+
+.sessionItem {
+  background: #ffffff;
+  border-radius: var(--ant-border-radius);
+  padding: 12px 14px;
+  margin-block-end: 8px;
+  box-shadow: 0 2px 8px var(--ant-color-fill-tertiary);
+}
+
+.sessionItemName {
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ant-color-text-base);
+}
+
+.sessionItemMeta {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: rgba(45, 45, 45, 0.55);
+}
+
+/* ── Success message ────────────────────────────────── */
+
+.successCard {
+  background: var(--ant-color-success);
+  border-radius: var(--ant-border-radius-lg);
+  padding: 32px 20px;
+  text-align: center;
+  color: #ffffff;
+  font-family: var(--ant-font-family);
+  font-size: 18px;
+  font-weight: 600;
+  margin-block-start: 24px;
+}
+
+/* ── Invalid token ──────────────────────────────────── */
+
+.invalidToken {
+  text-align: center;
+  padding: 64px 24px;
+  font-family: var(--ant-font-family);
+  font-size: 16px;
+  color: var(--ant-color-error);
+}

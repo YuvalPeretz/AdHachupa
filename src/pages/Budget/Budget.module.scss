@@ -1,0 +1,187 @@
+@use '../../styles/breakpoints' as bp;
+
+.page {
+  padding-block-start: 16px;
+  direction: rtl;
+  text-align: right;
+  @include bp.page-responsive-padding;
+}
+
+/* ── Context chips row ─────────────────────────────── */
+
+.contextChips {
+  display: flex;
+  flex-direction: row-reverse; // RTL
+  gap: 8px;
+  margin-block-end: 20px;
+  flex-wrap: wrap;
+}
+
+.contextChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  background: rgba(201, 169, 122, 0.12);
+  border-radius: 9999px;
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ant-color-link);
+}
+
+/* ── Donut hero section ────────────────────────────── */
+
+.donutSection {
+  margin-block-end: 8px;
+}
+
+.donutCenter {
+  line-height: 1.2;
+}
+
+.donutPercent {
+  font-family: var(--app-font-heading);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--ant-color-link);
+  font-variant-numeric: tabular-nums;
+}
+
+.donutLabel {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: rgba(45, 45, 45, 0.55);
+}
+
+.editBudgetLink {
+  margin-block-start: 10px;
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  color: var(--ant-color-link);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ── Gifts & breakeven card ────────────────────────── */
+
+.card {
+  background: #fff;
+  border-radius: var(--ant-border-radius-lg);
+  padding: 18px 16px;
+  box-shadow: var(--app-shadow-ambient);
+  margin-block-end: 16px;
+}
+
+.cardTitle {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(45, 45, 45, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-block-end: 14px;
+}
+
+.metaRow {
+  margin-block-end: 10px;
+
+  &:last-child {
+    margin-block-end: 0;
+  }
+}
+
+.metaLabel {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  color: var(--ant-color-text-secondary);
+}
+
+.metaValue {
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ant-color-text-base);
+  font-variant-numeric: tabular-nums;
+}
+
+.breakevenChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.breakevenChipPositive {
+  background: rgba(168, 197, 160, 0.18);
+  color: var(--ant-color-success);
+}
+
+.breakevenChipNegative {
+  background: rgba(224, 112, 112, 0.12);
+  color: var(--ant-color-error);
+}
+
+/* ── Category rows ─────────────────────────────────── */
+
+.categoryIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(201, 169, 122, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+
+.categoryInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.categoryHeader {
+  margin-block-end: 4px;
+}
+
+.categoryName {
+  font-family: var(--ant-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ant-color-text-base);
+}
+
+.categoryAmounts {
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: rgba(45, 45, 45, 0.55);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ── Section title ─────────────────────────────────── */
+
+.sectionTitle {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(45, 45, 45, 0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-block-end: 12px;
+  margin-block-start: 20px;
+}
+
+/* ── Skeleton ──────────────────────────────────────── */
+
+.skeletonSection {
+  margin-block-end: 20px;
+}

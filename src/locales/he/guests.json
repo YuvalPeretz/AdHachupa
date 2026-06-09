@@ -1,0 +1,91 @@
+{
+  "pageTitle": "מוזמנים",
+  "stats": {
+    "total": "סה\"כ",
+    "confirmed": "אישרו",
+    "cancelled": "ביטלו",
+    "pending": "ממתינים"
+  },
+  "sections": {
+    "couple": "הזוג",
+    "brideParents": "הורי הכלה",
+    "groomParents": "הורי החתן",
+    "other": "אחר"
+  },
+  "addGuest": {
+    "title": "הוספת מוזמן",
+    "namePlaceholder": "שם מלא",
+    "phonePlaceholder": "טלפון",
+    "emailPlaceholder": "דוא\"ל",
+    "plusOnesLabel": "מלווים",
+    "invitedByLabel": "מי הזמין",
+    "eventsLabel": "אירועים",
+    "saveButton": "שמור",
+    "cancelButton": "ביטול",
+    "nameRequired": "שם הוא שדה חובה"
+  },
+  "invitedBy": {
+    "couple": "הזוג",
+    "brideParents": "הורי הכלה",
+    "groomParents": "הורי החתן"
+  },
+  "duplicateWarning": {
+    "title": "אפשרות לכפילות",
+    "message": "ייתכן שאורח זה כבר קיים ברשימה — בדוק",
+    "review": "לסקירה"
+  },
+  "emptyState": "אין מוזמנים עדיין",
+  "detail": {
+    "title": "פרטי מוזמן",
+    "contactCard": "פרטי קשר",
+    "arrivalCard": "פרטי הגעה",
+    "eventsCard": "אירועים",
+    "assignmentCard": "שיוך",
+    "notesCard": "הערות",
+    "rsvpLabel": "אישור הגעה",
+    "plusOnesLabel": "מלווים",
+    "tableNoLabel": "מספר שולחן",
+    "tableNoPlaceholder": "הכנס מספר שולחן",
+    "invitedByLabel": "מי הזמין",
+    "notesPlaceholder": "הערות נוספות...",
+    "saveButton": "שמור שינויים",
+    "deleteSection": "מחיקת מוזמן",
+    "deleteButton": "מחק מוזמן",
+    "deleteConfirm": "האם אתה בטוח שברצונך למחוק את המוזמן?",
+    "phone": "טלפון",
+    "email": "דוא\"ל",
+    "noPhone": "אין טלפון",
+    "noEmail": "אין דוא\"ל"
+  },
+  "rsvp": {
+    "confirmed": "אישר",
+    "pending": "ממתין",
+    "cancelled": "ביטל",
+    "saveError": "שמירה נכשלה — נסה שוב"
+  },
+  "duplicates": {
+    "pageTitle": "כפילויות",
+    "reason": {
+      "phone_match": "אותו מספר טלפון",
+      "name_match": "שם דומה"
+    },
+    "mergeButton": "מזג",
+    "keepSeparateButton": "שמור בנפרד",
+    "mergedSuccess": "אוחד בהצלחה ✓",
+    "emptyState": "כל הכפילויות טופלו ✓",
+    "pairLabel": "כפילות אפשרית"
+  },
+  "share": {
+    "pageTitle": "הוספת אורחים",
+    "subtitle": "הזמנה להוסיף אורחים עבור {{coupleNames}}",
+    "namePlaceholder": "שם מלא",
+    "phonePlaceholder": "טלפון",
+    "plusOnesLabel": "מלווים",
+    "addButton": "הוסף",
+    "submitButton": "שלח רשימה",
+    "submitSuccess": "תודה! הרשימה נשלחה לזוג ✓",
+    "sessionListTitle": "אורחים שהוספת",
+    "invalidToken": "הקישור אינו תקין או פג תוקפו",
+    "nameRequired": "שם הוא שדה חובה"
+  }
+}

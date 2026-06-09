@@ -1,0 +1,55 @@
+.row {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  border: none;
+  border-radius: var(--ant-border-radius);
+  padding: 14px 16px;
+  cursor: pointer;
+  text-align: inherit; // inherit RTL from parent
+  box-shadow: 0 2px 8px var(--ant-color-fill-secondary);
+  transition: background 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    background: #fdf0f3;
+    outline: 2px solid var(--ant-color-primary);
+    outline-offset: 2px;
+  }
+}
+
+.rowCancelled {
+  background: #fafafa;
+  opacity: 0.75;
+}
+
+.infoSlot {
+  text-align: right; // RTL — name is on the right
+}
+
+.name {
+  margin: 0 0 2px;
+  font-family: var(--ant-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ant-color-text-base);
+}
+
+.nameCancelled {
+  text-decoration: line-through;
+  color: var(--ant-color-error);
+}
+
+.meta {
+  margin: 0;
+  font-family: var(--ant-font-family);
+  font-size: 12px;
+  color: rgba(45, 45, 45, 0.55);
+}
+
+
+.tableNo {
+  font-family: var(--ant-font-family);
+  font-size: 11px;
+  color: rgba(45, 45, 45, 0.5);
+}

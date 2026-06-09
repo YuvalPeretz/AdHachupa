@@ -1,0 +1,29 @@
+.banner {
+  // Blush rose background, RTL icon placement
+  background: var(--ant-color-primary) !important;
+  border-color: #e9a0b0 !important; // var(--ant-color-primary) darkened ~10%
+  border-radius: var(--ant-border-radius) !important;
+  direction: rtl;
+
+  // antd places .ant-alert-icon on the left by default;
+  // in RTL the ConfigProvider flips it, but we reinforce it here
+  :global(.ant-alert-icon) {
+    color: var(--ant-color-text-base);
+    opacity: 0.7;
+  }
+
+  :global(.ant-alert-message) {
+    font-family: var(--ant-font-family);
+    font-size: 14px;
+    color: var(--ant-color-text-base);
+  }
+}
+
+.reviewBtn {
+  font-family: var(--ant-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ant-color-text-base);
+  text-decoration: underline;
+  padding: 0 4px;
+}
