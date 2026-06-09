@@ -24,7 +24,7 @@ body {
   background-position: center;
   background-size:
     100% 100%,
-    100vw;
+    max(75vw, 75vh);
   background-attachment: fixed;
   font-family: var(--ant-font-family, "Rubik", sans-serif);
   color: var(--ant-color-text-base, #2d2d2d);
