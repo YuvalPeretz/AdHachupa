@@ -3,10 +3,19 @@ import { useParams, useNavigate } from 'react-router';
 import { Button, Flex, Spin } from 'antd';
 import { useQuery } from '@tanstack/react-query';
 import { getCoupleInvite, acceptCoupleInvite } from '../../lib/firestore/coupleInvites';
+import type { CoupleInviteInfo } from '../../lib/firestore/coupleInvites';
 import { signInWithGoogle } from '../../lib/firebase';
 import { useAppSelector, useAppDispatch } from '../../store';
 import { selectAuthStatus, selectAuthUid, selectCoupleId, setCoupleId } from '../../features/auth/authSlice';
 import styles from './JoinCouple.module.scss';
+
+declare global {
+  interface Window {
+    __PLAYWRIGHT_JOIN_INVITE__?: CoupleInviteInfo | null | 'loading';
+    __PLAYWRIGHT_ACCEPT_INVITE__?: { coupleId: string } | 'error';
+    __PLAYWRIGHT_ACCEPT_INVITE_CALLED__?: number;
+  }
+}
 
 type JoinState = 'idle' | 'joining' | 'success' | 'error';
 
@@ -25,7 +34,14 @@ export function JoinCouple() {
 
   const { data: invite, isLoading: inviteLoading } = useQuery({
     queryKey: ['coupleInvite', token],
-    queryFn: () => getCoupleInvite(token!),
+    queryFn: (): Promise<CoupleInviteInfo | null> => {
+      if (typeof window !== 'undefined' && '__PLAYWRIGHT_JOIN_INVITE__' in window) {
+        const seam = window.__PLAYWRIGHT_JOIN_INVITE__;
+        if (seam === 'loading') return new Promise<CoupleInviteInfo | null>(() => {});
+        return Promise.resolve(seam ?? null);
+      }
+      return getCoupleInvite(token!);
+    },
     enabled: Boolean(token),
     staleTime: 60_000,
   });
@@ -45,8 +61,16 @@ export function JoinCouple() {
     setJoinState('joining');
     setJoinError(null);
     try {
-      const { coupleId } = await acceptCoupleInvite(token);
-      dispatch(setCoupleId(coupleId));
+      let result: { coupleId: string };
+      if (typeof window !== 'undefined' && '__PLAYWRIGHT_ACCEPT_INVITE__' in window) {
+        window.__PLAYWRIGHT_ACCEPT_INVITE_CALLED__ = (window.__PLAYWRIGHT_ACCEPT_INVITE_CALLED__ ?? 0) + 1;
+        const seam = window.__PLAYWRIGHT_ACCEPT_INVITE__;
+        if (seam === 'error') throw new Error('mock error');
+        result = seam!;
+      } else {
+        result = await acceptCoupleInvite(token);
+      }
+      dispatch(setCoupleId(result.coupleId));
       setJoinState('success');
       setTimeout(() => void navigate('/dashboard'), 1500);
     } catch {
@@ -108,6 +132,24 @@ export function JoinCouple() {
     );
   }
 
+  // ── Success — checked before existingCoupleId so the screen renders after joining ──
+
+  if (joinState === 'success') {
+    return (
+      <div className={styles.page}>
+        <div className={styles.card}>
+          <div className={styles.logo}>
+            <img src="/transparent-icon-no-text.png" alt="" className={styles.logoImg} />
+          </div>
+          <div className={styles.title}>ברוכים הבאים! 🎉</div>
+          <div className={styles.successText}>
+            הצטרפתם בהצלחה לתכנון החתונה של {invite.coupleNames}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // ── User already belongs to a couple ─────────────────────────────────────
 
   if (existingCoupleId) {
@@ -121,24 +163,6 @@ export function JoinCouple() {
           <Button block onClick={() => void navigate('/dashboard')} style={{ marginTop: 20 }}>
             חזרה לאפליקציה
           </Button>
-        </div>
-      </div>
-    );
-  }
-
-  // ── Success ───────────────────────────────────────────────────────────────
-
-  if (joinState === 'success') {
-    return (
-      <div className={styles.page}>
-        <div className={styles.card}>
-          <div className={styles.logo}>
-            <img src="/transparent-icon-no-text.png" alt="" className={styles.logoImg} />
-          </div>
-          <div className={styles.title}>ברוכים הבאים! 🎉</div>
-          <div className={styles.successText}>
-            הצטרפתם בהצלחה לתכנון החתונה של {invite.coupleNames}
-          </div>
         </div>
       </div>
     );

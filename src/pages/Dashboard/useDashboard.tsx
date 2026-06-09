@@ -161,6 +161,7 @@ export interface UseDashboardResult {
   data: DashboardPayload | undefined;
   isLoading: boolean;
   isFetching: boolean;
+  isError: boolean;
   dataUpdatedAt: number;
 }
 
@@ -168,7 +169,7 @@ export function useDashboard(): UseDashboardResult {
   const staleTime = getStaleTime();
   const coupleId = useAppSelector(selectCoupleId) ?? '';
 
-  const { data, isLoading, isFetching, dataUpdatedAt } = useQuery<DashboardPayload>({
+  const { data, isLoading, isFetching, isError, dataUpdatedAt } = useQuery<DashboardPayload>({
     queryKey: ['dashboard', coupleId],
     queryFn: () => fetchDashboard(coupleId),
     staleTime,
@@ -176,5 +177,5 @@ export function useDashboard(): UseDashboardResult {
     enabled: Boolean(coupleId),
   });
 
-  return { data, isLoading, isFetching, dataUpdatedAt };
+  return { data, isLoading, isFetching, isError, dataUpdatedAt };
 }

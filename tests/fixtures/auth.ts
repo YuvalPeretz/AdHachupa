@@ -2,8 +2,8 @@
  * Playwright auth mock fixtures.
  *
  * Use `mockAuthenticated` / `mockUnauthenticated` / `mockAuthenticatedWithCouple`
- * in `page.addInitScript` BEFORE calling `page.goto` to control the auth state
- * seen by the app.
+ * / `mockAuthenticatedWithCoupleId` in `page.addInitScript` BEFORE calling
+ * `page.goto` to control the auth state seen by the app.
  *
  * These work by setting window-level properties that the app's AuthListener,
  * useCoupleByUid, and signInWithGoogle check before touching real Firebase —
@@ -47,6 +47,30 @@ export async function mockAuthenticatedWithCouple(
   page: import('playwright/test').Page,
 ) {
   return mockAuthenticated(page, { coupleExists: true });
+}
+
+/**
+ * Injects an authenticated user WITH an explicit coupleId.
+ * Use this when the user must already belong to a couple at page load
+ * (e.g. testing the JoinCouple "already in couple" guard, or Settings invite).
+ */
+export async function mockAuthenticatedWithCoupleId(
+  page: import('playwright/test').Page,
+  coupleId: string,
+  options?: { uid?: string; displayName?: string; email?: string },
+) {
+  const uid = options?.uid ?? 'test-uid-123';
+  const displayName = options?.displayName ?? 'Test User';
+  const email = options?.email ?? 'test@example.com';
+
+  await page.addInitScript(
+    ({ uid, displayName, email, coupleId }) => {
+      window.__PLAYWRIGHT_AUTH_MOCK__ = { uid, displayName, email, photoURL: null, coupleId };
+      window.__PLAYWRIGHT_SIGN_IN_MOCK__ = () =>
+        Promise.resolve({} as import('firebase/auth').UserCredential);
+    },
+    { uid, displayName, email, coupleId },
+  );
 }
 
 /** Injects unauthenticated state. Also mocks signInWithGoogle to fire a sign-in mock. */

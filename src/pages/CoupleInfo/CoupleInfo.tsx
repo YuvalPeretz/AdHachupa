@@ -15,6 +15,7 @@ import {
 } from '../../store/onboardingSlice';
 import type { Gender } from '../../store/onboardingSlice';
 import { functions } from '../../lib/firebase';
+import { createUserProfile } from '../../lib/firestore/couples';
 import { selectAuthUid, setCoupleId } from '../../features/auth/authSlice';
 import styles from './CoupleInfo.module.scss';
 
@@ -66,7 +67,15 @@ export function CoupleInfo() {
           guestCount: eventConfigs[type]?.guestCount ?? 100,
         })),
       });
-      dispatch(setCoupleId(result.data.coupleId));
+      const coupleId = result.data.coupleId;
+      // Write users/{uid} → { coupleId } so Firestore security rules can resolve
+      // the caller's couple on every subsequent read. The rules use
+      // get(users/{uid}).data.coupleId; without this doc every query returns
+      // PERMISSION_DENIED, causing an endless loading skeleton on the dashboard.
+      if (uid && coupleId) {
+        await createUserProfile(uid, coupleId);
+      }
+      dispatch(setCoupleId(coupleId));
       dispatch(resetOnboarding());
       void navigate('/onboarding/success');
     } catch (err) {

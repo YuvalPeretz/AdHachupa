@@ -235,10 +235,37 @@ function DashboardSkeleton() {
 export function Dashboard() {
   const { t } = useTranslation('dashboard');
   const navigate = useNavigate();
-  const { data, isLoading } = useDashboard();
+  const { data, isLoading, isError } = useDashboard();
 
-  if (isLoading || !data) {
+  if (isLoading) {
     return <DashboardSkeleton />;
+  }
+
+  if (isError || !data) {
+    return (
+      <div className={styles.page} data-testid="dashboard-error">
+        <div style={{ textAlign: 'center', padding: '60px 24px' }}>
+          <p style={{ fontSize: 16, color: 'rgba(45,45,45,0.65)', marginBottom: 20 }}>
+            שגיאה בטעינת הנתונים. בדקו את החיבור לאינטרנט ונסו שוב.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              background: '#C9A97A',
+              color: '#fff',
+              border: 'none',
+              borderRadius: 12,
+              padding: '12px 28px',
+              fontSize: 15,
+              cursor: 'pointer',
+            }}
+            data-testid="dashboard-retry-btn"
+          >
+            נסה שוב
+          </button>
+        </div>
+      </div>
+    );
   }
 
   const { upcomingEvent, taskProgress, upcomingTasks, budget, vendors, otherEvents, coupleNames } = data;

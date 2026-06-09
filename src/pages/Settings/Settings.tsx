@@ -7,10 +7,32 @@ import { httpsCallable } from 'firebase/functions';
 import { useQuery } from '@tanstack/react-query';
 import { getCouple } from '../../lib/firestore/couples';
 import { createCoupleInvite } from '../../lib/firestore/coupleInvites';
+import type { CoupleDoc } from '../../lib/firestore/types';
 import { useAppSelector } from '../../store';
 import { selectAuthUid, selectCoupleId } from '../../features/auth/authSlice';
 import { functions, signOutUser } from '../../lib/firebase';
 import styles from './Settings.module.scss';
+
+declare global {
+  interface Window {
+    __PLAYWRIGHT_SETTINGS_COUPLE__?: Pick<CoupleDoc, 'coupleId' | 'memberUids' | 'name1' | 'name2' | 'region' | 'isKosher'> | null | 'loading';
+    __PLAYWRIGHT_CREATE_INVITE_TOKEN__?: string | 'error';
+    __PLAYWRIGHT_CREATE_INVITE_CALLED__?: number;
+  }
+}
+
+const SEAM_COUPLE_SOLO: Pick<CoupleDoc, 'coupleId' | 'memberUids' | 'name1' | 'name2' | 'region' | 'isKosher'> = {
+  coupleId: 'test-uid-123',
+  memberUids: ['test-uid-123'],
+  name1: 'יובל',
+  name2: 'שיר',
+  region: 'tel_aviv',
+  isKosher: false,
+};
+
+function inPlaywright(): boolean {
+  return typeof window !== 'undefined' && '__PLAYWRIGHT_AUTH_MOCK__' in window;
+}
 
 const { Title, Text } = Typography;
 
@@ -36,7 +58,17 @@ export function Settings() {
 
   const { data: couple, isLoading } = useQuery({
     queryKey: ['couple', coupleId],
-    queryFn: () => getCouple(coupleId),
+    queryFn: (): Promise<CoupleDoc | null> => {
+      if (typeof window !== 'undefined') {
+        if ('__PLAYWRIGHT_SETTINGS_COUPLE__' in window) {
+          const seam = window.__PLAYWRIGHT_SETTINGS_COUPLE__;
+          if (seam === 'loading') return new Promise<CoupleDoc | null>(() => {});
+          return Promise.resolve((seam ?? null) as CoupleDoc | null);
+        }
+        if (inPlaywright()) return Promise.resolve(SEAM_COUPLE_SOLO as unknown as CoupleDoc);
+      }
+      return getCouple(coupleId);
+    },
     enabled: Boolean(coupleId),
   });
 
@@ -82,8 +114,16 @@ export function Settings() {
     if (!coupleId || !uid || !couple) return;
     setGeneratingInvite(true);
     try {
-      const coupleNames = `${couple.name1} ו${couple.name2}`;
-      const token = await createCoupleInvite(coupleId, uid, coupleNames);
+      let token: string;
+      if (typeof window !== 'undefined' && '__PLAYWRIGHT_CREATE_INVITE_TOKEN__' in window) {
+        window.__PLAYWRIGHT_CREATE_INVITE_CALLED__ = (window.__PLAYWRIGHT_CREATE_INVITE_CALLED__ ?? 0) + 1;
+        const seam = window.__PLAYWRIGHT_CREATE_INVITE_TOKEN__;
+        if (seam === 'error') throw new Error('mock error');
+        token = seam!;
+      } else {
+        const coupleNames = `${couple.name1} ו${couple.name2}`;
+        token = await createCoupleInvite(coupleId, uid, coupleNames);
+      }
       const link = `${window.location.origin}/join/${token}`;
       setInviteLink(link);
     } catch {
